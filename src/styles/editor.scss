@@ -1,0 +1,88 @@
+/**
+ * Code editor
+ */
+
+$textColor:#5c5c5c;
+$editorBackgroundColor: #f4f3eb;
+.CodeMirror {
+    font-weight: 500;
+    font-family: 'Jetbrains Mono', monospace;
+    padding: 0.8em 0;
+    min-height: 79vh;
+    width: 100%;
+    font-size: 18px;
+    background: $editorBackgroundColor;
+    resize: none;
+    border-radius: 5px;
+}
+
+.CodeMirror-gutters {
+    background: $editorBackgroundColor;
+    border: none;
+    color: #1b1b1b !important;
+}
+
+.CodeMirror-linenumber {
+    color: #5c5c5c !important;
+    padding-left: 10px;
+    margin-top: 0;
+    padding-top: 0;
+    font-weight: 800;
+}
+
+.CodeMirror-foldgutter-open {
+    color: #1b1b1b !important;
+    font-weight: 800;
+}
+
+.CodeMirror-guttermarker-subtle {
+    color: #1b1b1b !important;
+    font-weight: 800;
+}
+
+.CodeMirror-selected {
+    background: #eae9dc !important;
+}
+
+.CodeMirror-lint-marker-error {
+    left: 5px;
+}
+
+.CodeMirror-vscrollbar::-webkit-scrollbar {
+    width: 9px;
+}
+
+.CodeMirror-vscrollbar::-webkit-scrollbar-thumb {
+    background: #6abfce;
+    border-radius: 999px;
+    border: 2px solid #000;
+}
+
+.CodeMirror-vscrollbar::-webkit-scrollbar-track {
+    background: #eae9dc;
+}
+
+.CodeMirror-foldmarker {
+    font-size: 2rem;
+    font-weight: bolder;
+    color: #1b1b1b !important;
+    text-shadow: none !important;
+}
+
+.CodeMirror-lint-tooltip {
+    background-color: $editorBackgroundColor !important;
+}
+
+.cm-string.cm-property {
+    color: #cb4b16 !important;
+}
+
+.cm-string {
+    color: #2aa198 !important;
+}
+
+#code-editor {
+    height: inherit;
+    border-top: 5px dotted #000;
+    border-bottom: 5px dotted #000;
+}
