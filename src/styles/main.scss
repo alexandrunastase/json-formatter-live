@@ -1,0 +1,134 @@
+@import "./variables.scss";
+@import "./blocks.scss";
+@import "./editor.scss";
+
+/* purgecss start ignore */
+
+@tailwind base;
+@tailwind components;
+
+/* purgecss end ignore */
+
+@tailwind utilities;
+html {
+    /* Fix width issues caused by scrollbar */
+    @apply w-screen;
+    @apply overflow-x-hidden;
+    // Extract color
+    background: #f9f8f4;
+}
+
+.blok {
+    border: none;
+}
+
+body {
+    font-family: system-ui, 'Helvetica Neue', 'Arial', sans-serif;
+    --block-text-color: #333;
+    --block-accent-color: #0d9e6f;
+    --block-background-color: #f4f3eb;
+    --block-shadow-color: #6abfce;
+    color: $grayColor;
+}
+
+[x-cloak] {
+    display: none;
+}
+
+
+/* Remove firefox borders */
+
+:focus {
+    outline: none;
+}
+
+::-moz-focus-inner {
+    border: 0;
+}
+
+#main {
+    min-width: 430px;
+    background-color: #f9f8f4;
+}
+
+h1 {
+    @apply text-2xl;
+}
+
+h2 {
+    @apply text-2xl;
+    @apply mb-8;
+    @apply mt-2;
+    @apply font-bold;
+}
+
+h3 {
+    @apply text-xl;
+    @apply mb-5;
+    @apply mt-5;
+    @apply font-bold;
+}
+
+p {
+    @apply font-medium;
+}
+
+article ul li {
+    @apply list-disc m-4 font-medium;
+}
+
+.button {
+    @apply font-bold rounded py-2 px-4;
+}
+
+.button.copy {
+    @apply right-0 relative;
+}
+
+.modal {
+    visibility: hidden;
+}
+
+.modal:target {
+    visibility: visible;
+}
+
+a.link {
+    position: relative;
+    font-weight: 600;
+    color: black;
+}
+
+a.link::after {
+    content: "";
+    position: absolute;
+    top: 65%;
+    left: -0.1em;
+    right: -0.1em;
+    bottom: 0;
+    transition: top 200ms cubic-bezier(0, .8, .13, 1);
+    background-color: rgba(106, 191, 206, 0.5);
+}
+
+a.link:hover::after {
+    top: 0%;
+}
+
+
+/** APP */
+
+.app-name {
+    color: #d06235;
+}
+
+footer .description {
+    margin: 1em 0;
+    padding: 0.8em 1em;
+    background-color: #f4f3eb;
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+section>article>#install>img {
+    max-width: 60em;
+}
