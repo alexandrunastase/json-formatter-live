@@ -1,0 +1,13 @@
+[[headers]]
+  for = '~* ".(ico|css|js|gif|jpe?g|png)$"' 
+  [headers.values]
+	expires = '30d'
+	cache-control = 'public'
+
+[[headers]]
+  for = "/service-worker.js"
+  [headers.values]
+	cache-control = '''
+	no-cache,
+	no-store,
+	must-revalidate'''
