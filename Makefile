@@ -19,4 +19,7 @@ destroy:
 	@docker-compose down --rmi local --volumes
 
 clean:
-	rm -rf public/index.html public/dist/*
+	@rm -rf public/index.html public/dist/* node_modules/
+
+install:
+	@npm install
