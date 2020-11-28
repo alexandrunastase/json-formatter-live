@@ -1,5 +1,5 @@
-# json formatter live
-json formatter live / Keyboard first, privacy-friendly, [installable](https://support.google.com/chrome/answer/9658361?co=GENIE.Platform%3DDesktop&hl=en) JSON formatter
+# [json formatter live](https://jsonformatter.live)
+json formatter live / Keyboard first, privacy-friendly, [installable](https://support.google.com/chrome/answer/9658361?co=GENIE.Platform%3DDesktop&hl=en) JSON editor & formatter
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/dec0f7d7-666e-4b01-ab1e-b282a52ab6d5/deploy-status)](https://app.netlify.com/sites/jfl/deploys)
 
