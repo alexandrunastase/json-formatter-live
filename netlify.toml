@@ -11,3 +11,9 @@
 	no-cache,
 	no-store,
 	must-revalidate'''
+
+[[redirects]]
+  from = "http://www.jsonformatter.live/"
+  to = "https://jsonformatter.live/"
+  status = 301
+  force = true  
