@@ -13,7 +13,27 @@
 	must-revalidate'''
 
 [[redirects]]
-  from = "http://www.jsonformatter.live/"
-  to = "https://jsonformatter.live/"
+  from = "http://www.jsonformatter.com/"
+  to = "https://jsonformatter.com/"
   status = 301
   force = true  
+
+#.live -> .com
+
+[[redirects]]
+  from = "http://www.jsonformatter.live/"
+  to = "https://jsonformatter.com/"
+  status = 301
+  force = true 
+
+[[redirects]]
+  from = "http://jsonformatter.live/"
+  to = "https://jsonformatter.com/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://jsonformatter.live/"
+  to = "https://jsonformatter.com/"
+  status = 301
+  force = true
