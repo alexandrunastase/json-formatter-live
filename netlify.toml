@@ -24,6 +24,12 @@
   from = "http://www.jsonformatter.live/"
   to = "https://jsonformatter.com/"
   status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.jsonformatter.live/"
+  to = "https://jsonformatter.com/"
+  status = 301
   force = true 
 
 [[redirects]]
