@@ -9,5 +9,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Install npm dependencies
+        uses: bahmutov/npm-install@v1
+        env:
+          NODE_ENV: production
+
       - name: Run tests
         run: make test
