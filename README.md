@@ -1,6 +1,7 @@
 # [json formatter live](https://jsonformatter.com)
 Keyboard first, privacy-friendly, installable JSON formatter
 
+![End-to-end tests](https://github.com/alexandrunastase/json-formatter-live/workflows/End-to-end%20tests/badge.svg?branch=main)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/dec0f7d7-666e-4b01-ab1e-b282a52ab6d5/deploy-status)](https://app.netlify.com/sites/jfl/deploys)
 
 ### Run the project locally

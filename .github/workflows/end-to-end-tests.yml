@@ -3,7 +3,7 @@ name: End-to-end tests
 on: [push]
 
 jobs:
-  cypress-run:
+  end-to-end-tests:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
