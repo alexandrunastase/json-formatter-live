@@ -1,0 +1,5 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/alex/Projects/jfl_sveltekit'
+npm run dev
+make: Leaving directory '/home/alex/Projects/jfl_sveltekit'
+ 

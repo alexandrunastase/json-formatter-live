@@ -1,9 +1,6 @@
-# IDE metadata
-.idea/
-.vscode/
-
-# Client
-node_modules/
-public/dist/
-public/index.html
-cypress/videos/
+.DS_Store
+node_modules
+/.svelte-kit
+/build
+/functions
+/cypress/screenshots/
