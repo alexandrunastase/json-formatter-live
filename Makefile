@@ -1,25 +1,38 @@
+.PHONY: run
+run:
+	@npm run dev
+
+.PHONY: build
 build: 
-	@npx gulp build
+	@npm run build
 
-test: run
-	@npx cypress run
+.PHONY: format
+format:
+	@npm run format
 
-dev: run-server
-	@npx gulp
+.PHONY: lint
+lint:
+	npm run lint
 
-run: build run-server
+.PHONY: preview
+preview: clean install build
+	@docker-compose up --build
 
-run-client:
-	@npx gulp
-
-run-server:
+.PHONY: run-prod
+run-prod: clean install build
 	@docker-compose up -d --build
 
-destroy:
-	@docker-compose down --rmi local --volumes
-
+.PHONY: clean
 clean:
-	@rm -rf public/index.html public/dist/* node_modules/
+	@rm -rf build/* node_modules/
 
+.PHONY: install
 install:
 	@npm install
+
+.PHONY: test
+test:
+	@npx cypress run
+
+.PHONY: clean-test
+clean-test: run-prod test

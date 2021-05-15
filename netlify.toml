@@ -1,45 +1,49 @@
-[[headers]]
-  for = '~* ".(ico|css|js|gif|jpe?g|png)$"' 
-  [headers.values]
-	expires = '30d'
-	cache-control = 'public'
+[build]
+command = "npm run build"
+publish = "build/"
 
 [[headers]]
-  for = "/service-worker.js"
-  [headers.values]
-	cache-control = '''
+for = '~* ".(ico|css|js|gif|jpe?g|png)$"'
+[headers.values]
+expires = '30d'
+cache-control = 'public'
+
+[[headers]]
+for = "/service-worker.js"
+[headers.values]
+cache-control = '''
 	no-cache,
 	no-store,
 	must-revalidate'''
 
 [[redirects]]
-  from = "http://www.jsonformatter.com/"
-  to = "https://jsonformatter.com/"
-  status = 301
-  force = true  
+from = "http://www.jsonformatter.com/"
+to = "https://jsonformatter.com/"
+status = 301
+force = true
 
 #.live -> .com
 
 [[redirects]]
-  from = "http://www.jsonformatter.live/"
-  to = "https://jsonformatter.com/"
-  status = 301
-  force = true
+from = "http://www.jsonformatter.live/"
+to = "https://jsonformatter.com/"
+status = 301
+force = true
 
 [[redirects]]
-  from = "https://www.jsonformatter.live/"
-  to = "https://jsonformatter.com/"
-  status = 301
-  force = true 
+from = "https://www.jsonformatter.live/"
+to = "https://jsonformatter.com/"
+status = 301
+force = true
 
 [[redirects]]
-  from = "http://jsonformatter.live/"
-  to = "https://jsonformatter.com/"
-  status = 301
-  force = true
+from = "http://jsonformatter.live/"
+to = "https://jsonformatter.com/"
+status = 301
+force = true
 
 [[redirects]]
-  from = "https://jsonformatter.live/"
-  to = "https://jsonformatter.com/"
-  status = 301
-  force = true
+from = "https://jsonformatter.live/"
+to = "https://jsonformatter.com/"
+status = 301
+force = true

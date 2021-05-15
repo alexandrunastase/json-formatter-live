@@ -1,31 +1,28 @@
 /* eslint-disable no-undef */
 /// <reference types="cypress" />
 
-context("Format", () => {
-    beforeEach(() => {
-        cy.visit("http://localhost:8001");
-    });
+// TODO: Add test for shortcut also
+context('Format', () => {
+	it('Formats JSON as expected', () => {
+		let editor;
+		cy.get('.CodeMirror').then(($editor) => {
+			editor = $editor[0].CodeMirror;
 
-    it("Formats JSON as expected", () => {
-        let jsonToFormat = "{\"Hi\":\"JSON goes here\",\"Step 1\":\"Ctrl + V to paste code (it's selected by default)\",\"Step 2\":\"Alt + Shift + F to format\"}";
-        let expectedFormatterJson = `{
+			let jsonToFormat = `{"Hi":"JSON goes here","Step 1":"Ctrl + V to paste code (it\'s selected by default)","Step 2":"Alt + Shift + F to format"}`;
+			let expectedFormatterJson = `{
   "Hi": "JSON goes here",
   "Step 1": "Ctrl + V to paste code (it's selected by default)",
   "Step 2": "Alt + Shift + F to format"
 }`;
 
-        cy.window().then((window) => {
-            window.codeEditor.setValue("");
-        });
+			editor.setValue('');
+			editor.setValue(jsonToFormat);
 
-        cy.window().then((window) => {
-            window.codeEditor.setValue(jsonToFormat);
-        });
-
-        cy.get(".format.button").click();
-
-        cy.window().then((window) => {
-            assert.equal(expectedFormatterJson, window.codeEditor.getValue());
-        });
-    });
+			cy.get('.format.button')
+				.click()
+				.then(() => {
+					assert.equal(expectedFormatterJson, editor.getValue());
+				});
+		});
+	});
 });

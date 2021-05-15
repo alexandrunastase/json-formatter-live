@@ -1,20 +1,11 @@
 /* eslint-disable no-undef */
 /// <reference types="cypress" />
 
-context("About", () => {
+context('About', () => {
+	it('Scrolls to about section', () => {
+		cy.get('.about').should('be.visible').click();
 
-    beforeEach(() => {
-        cy.visit("http://localhost:8001");
-    });
-
-    it("Opens About modal", () => {
-
-        cy.get(".about")
-            .should("be.visible")
-            .click();
-
-        cy.get(".about-modal")
-            .should("be.visible")
-            .and("contain", "About");
-    });
+		cy.get('#about').should('be.visible').and('contain', 'About');
+		cy.scrollTo('bottom').window().its('scrollY').should('not.equal', 0);
+	});
 });
