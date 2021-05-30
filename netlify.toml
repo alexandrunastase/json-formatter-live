@@ -2,6 +2,9 @@
 command = "npm run build"
 publish = "build/"
 
+[build.environment]
+NODE_VERSION = "14"
+
 [[headers]]
 for = '~* ".(ico|css|js|gif|jpe?g|png)$"'
 [headers.values]
