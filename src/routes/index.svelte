@@ -16,7 +16,7 @@
 	<link
 		rel="apple-touch-icon"
 		sizes="57x57"
-		href="/images/icons/apple-touch-icon-57x57.png?version='adsasd'"
+		href="/images/icons/apple-touch-icon-57x57.png?version={version}"
 	/>
 	<link
 		rel="apple-touch-icon"

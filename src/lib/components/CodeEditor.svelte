@@ -107,6 +107,7 @@
 
 	<div class="absolute bottom-0 right-0 z-10 flex mb-2 mr-6">
 		<button
+			title="Alt+Shift+F"
 			on:click={() => codeEditor.setValue(formatJson(codeEditor.getValue()))}
 			class="flex format blok button bottom action"
 		>
@@ -117,6 +118,7 @@
 			format
 		</button>
 		<button
+	     	title="Alt+Shift+M"
 			on:click={() => codeEditor.setValue(minifyJson(codeEditor.getValue()))}
 			class="flex minify blok button bottom action"
 		>
