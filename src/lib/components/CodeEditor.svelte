@@ -1,4 +1,4 @@
-<script lang="typescript">
+<script lang="ts">
 	import { onMount } from 'svelte';
 
 	let codeEditor;
@@ -118,7 +118,7 @@
 			format
 		</button>
 		<button
-	     	title="Alt+Shift+M"
+			title="Alt+Shift+M"
 			on:click={() => codeEditor.setValue(minifyJson(codeEditor.getValue()))}
 			class="flex minify blok button bottom action"
 		>
