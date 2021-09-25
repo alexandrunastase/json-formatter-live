@@ -16,10 +16,9 @@
 	const copyEditorContent = (): void => {
 		codeEditor.execCommand('selectAll');
 		codeEditor.focus();
-
-		document.execCommand('copy');
+		navigator.clipboard.writeText(codeEditor.getValue());
 	};
-
+	
 	onMount(() => {
 		(async () => {
 			const editorElement = document.getElementById('code-editor');

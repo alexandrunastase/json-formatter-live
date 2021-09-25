@@ -7,9 +7,8 @@ const config = {
 	// for more information about preprocessors
 	preprocess: [
 		preprocess({
-			defaults: {
-				style: 'postcss',
-			},
+			lang: 'typescript',
+			style: 'postcss',
 			postcss: true,
 		}),
 	],
