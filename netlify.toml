@@ -1,10 +1,13 @@
 [build]
-command = "npm run build && make test"
+command = "npm run build"
 publish = "build/"
 
 [build.environment]
 NODE_VERSION = "14"
 NPM_VERSION = "6"
+
+[[plugins]]
+package = "netlify-plugin-cypress"
 
 [[headers]]
 for = '~* ".(ico|css|js|gif|jpe?g|png)$"'
@@ -28,6 +31,10 @@ cache-control = '''
 	no-store,
 	must-revalidate'''
 
+##############
+# REDIRECTS
+##############
+
 [[redirects]]
 from = "http://www.jsonformatter.com/"
 to = "https://jsonformatter.com/"
@@ -35,7 +42,6 @@ status = 301
 force = true
 
 #.live -> .com
-
 [[redirects]]
 from = "http://www.jsonformatter.live/"
 to = "https://jsonformatter.com/"
