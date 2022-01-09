@@ -5,3 +5,4 @@ node_modules
 /functions
 /cypress/screenshots/
 /.vscode/
+src/build-version.json

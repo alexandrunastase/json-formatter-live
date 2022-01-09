@@ -3,6 +3,7 @@
 
 context('Copy', () => {
 	it('Copies the JSON', () => {
+		cy.get('.CodeMirror').should('be.visible');
 		cy.get('.copy.button').click();
 
 		cy.window().then((window) => {

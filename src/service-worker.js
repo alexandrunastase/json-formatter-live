@@ -1,6 +1,6 @@
 (function () {
 	'use strict';
-
+	
 	// Update 'version' if you need to refresh the cache
 	var version = '20052021::CacheFirstSafe';
 	var offlineUrl = '/';

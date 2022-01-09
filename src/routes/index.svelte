@@ -2,16 +2,17 @@
 	import CodeEditor from '$lib/components/CodeEditor.svelte';
 	import Header from '$lib/components/Header.svelte';
 	import About from '$lib/components/About.svelte';
+	import buildVersion from '../build-version.json';
+	const version = buildVersion.version;
 
-	const d = new Date();
-	const version = `${d.getFullYear()}_${
-		d.getMonth() + 1
-	}_${d.getDate()}__${d.getHours()}_${d.getMinutes()}_${d.getSeconds()}`;
+
 </script>
+
 
 <svelte:head>
 	<link rel="icon" href="/favicon.png?version={version}" />
 
+	
 	<link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png?version={version}" />
 	<link
 		rel="apple-touch-icon"

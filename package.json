@@ -15,7 +15,7 @@
 		"@typescript-eslint/parser": "^4.31.2",
 		"autoprefixer": "^10.3.0",
 		"cssnano": "^5.0.8",
-		"cypress": "^8.4.0",
+		"cypress": "^9.2.0",
 		"cypress-log-to-output": "^1.1.2",
 		"eslint": "^7.32.0",
 		"eslint-config-prettier": "^8.3.0",
