@@ -20,6 +20,14 @@ cache-control = '''
 	no-store,
 	must-revalidate'''
 
+[[headers]]
+for = "/manifest.json"
+[headers.values]
+cache-control = '''
+	no-cache,
+	no-store,
+	must-revalidate'''
+
 [[redirects]]
 from = "http://www.jsonformatter.com/"
 to = "https://jsonformatter.com/"
