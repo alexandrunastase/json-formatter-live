@@ -54,7 +54,7 @@
 		sizes="180x180"
 		href="/images/icons/apple-touch-icon-180x180.png?version={version}"
 	/>
-	<link rel="manifest" href="manifest.json?version={version}" />
+	<link rel="manifest" href="manifest.json" />
 </svelte:head>
 
 <main>
