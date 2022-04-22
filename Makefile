@@ -34,5 +34,9 @@ install:
 test:
 	@npx cypress run
 
+.PHONY: check-updates
+check-updates:
+	@npx npm-check-updates
+
 .PHONY: clean-test
 clean-test: run-prod test
