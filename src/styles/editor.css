@@ -1,0 +1,149 @@
+#code-editor {
+    height: inherit;
+}
+
+/* CodeMirror 6 base styles */
+.cm-editor {
+    font-weight: 500;
+    font-family: 'Jetbrains Mono', monospace;
+    padding: 0.8em 0;
+    min-height: 42vh;
+    width: 100%;
+    font-size: 18px;
+    background: #ffffff;
+    resize: none;
+    border-radius: 5px;
+}
+
+.cm-gutters {
+    background: #ffffff;
+    border: none;
+    color: #1b1b1b !important;
+}
+
+.cm-lineNumbers .cm-gutterElement {
+    color: #5c5c5c !important;
+    padding-left: 10px;
+    margin-top: 0;
+    padding-top: 0;
+    font-weight: 800;
+}
+
+.cm-foldGutter .cm-gutterElement {
+    color: #1b1b1b !important;
+    font-weight: 800;
+}
+
+.cm-selectionBackground {
+    background: #e9e9ed !important;
+}
+
+/* Scrollbar styling */
+.cm-scroller::-webkit-scrollbar {
+    width: 9px;
+}
+
+.cm-scroller::-webkit-scrollbar-thumb {
+    background: #6abfce;
+    border-radius: 999px;
+    border: 2px solid #fff;
+}
+
+.cm-scroller::-webkit-scrollbar-track {
+    background: #f6f8fa;
+}
+
+/* Focus styling */
+:focus {
+    outline: none;
+}
+
+.cm-editor.cm-focused {
+    outline: none;
+}
+
+::-moz-focus-inner {
+    border: 0;
+}
+
+.editor-container {
+    min-height: 30em;
+}
+
+/* Dark mode specific styles */
+.dark .cm-editor {
+    background-color: #18181b !important;
+}
+
+.dark .cm-scroller {
+    background-color: #18181b !important;
+}
+
+.dark .cm-scroller::-webkit-scrollbar-thumb {
+    border-color: #18181b;
+}
+
+.dark .cm-scroller::-webkit-scrollbar-track {
+    background: #27272a;
+}
+
+.dark .cm-gutters {
+    background-color: #18181b !important;
+    border-right-color: #27272a !important;
+}
+
+/* Selection styles */
+.cm-editor .cm-selectionBackground {
+    background-color: rgba(100, 100, 255, 0.2) !important;
+}
+
+.dark .cm-editor .cm-selectionBackground {
+    background-color: rgba(120, 120, 255, 0.3) !important;
+}
+
+/* Improve cursor visibility */
+.cm-editor .cm-cursor {
+    border-left: 2px solid #000 !important;
+}
+
+.dark .cm-editor .cm-cursor {
+    border-left: 2px solid #fff !important;
+}
+
+/* Ensure active line is visible */
+.cm-editor .cm-activeLine {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+.dark .cm-editor .cm-activeLine {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Lint markers */
+.cm-diagnostic-error {
+    border-left: 2px solid #e53e3e;
+    padding-left: 6px;
+}
+
+.cm-diagnostic-warning {
+    border-left: 2px solid #dd6b20;
+    padding-left: 6px;
+}
+
+/* Tooltip styling */
+.cm-tooltip {
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.dark .cm-tooltip {
+    background-color: #27272a;
+    border-color: #3f3f46;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Make the editor container responsive */
+.editor-container .cm-editor {
+    width: 100%;
+    height: 100%;
+}

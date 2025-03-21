@@ -1,0 +1,5 @@
+jsonformatter.localhost {
+    tls /etc/app/certs/jsonformatter.localhost.pem /etc/app/certs/jsonformatter.localhost-key.pem
+
+    reverse_proxy nextjs:3080
+}

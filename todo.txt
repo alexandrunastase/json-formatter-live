@@ -1,0 +1,1 @@
+- Add ubuntu and ubuntu mono fonts to the editor without using google fonts

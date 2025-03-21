@@ -1,9 +1,8 @@
 
 const navigation = {
   main: [
-    { name: 'About', href: '#' },
-    { name: 'Privacy', href: '#' },
-    { name: 'Support', href: '#' },
+    { name: 'About', href: '/about' },
+    { name: 'Privacy Policy', href: '/privacy-policy' },
   ],
   social: [
     {
@@ -30,7 +29,7 @@ const navigation = {
     },
     {
       name: 'GitHub',
-      href: '#',
+      href: 'https://github.com/alexandrunastase/json-formatter-live',
       icon: (props) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
@@ -46,12 +45,12 @@ const navigation = {
 
 export function Footer() {
   return (
-    <footer className="bg-white">
-      <div className="px-6 py-20 mx-auto overflow-hidden max-w-7xl sm:py-24 lg:px-8">
-        <nav className="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12" aria-label="Footer">
+    <footer className="bg-zinc-50 dark:bg-zinc-900 transition-colors duration-150">
+      <div className="px-6 py-1 mx-auto overflow-hidden max-w-7xl lg:px-8">
+        <nav className="gap-x-5 flex justify-center" aria-label="Footer">
           {navigation.main.map((item) => (
             <div key={item.name} className="pb-6">
-              <a href={item.href} className="text-sm leading-6 text-gray-600 hover:text-gray-900">
+              <a href={item.href} className="text-sm leading-6 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200">
                 {item.name}
               </a>
             </div>
@@ -59,14 +58,14 @@ export function Footer() {
         </nav>
         <div className="flex justify-center mt-10 space-x-10">
           {navigation.social.map((item) => (
-            <a key={item.name} href={item.href} className="text-gray-400 hover:text-gray-500">
+            <a target="_blank" key={item.name} href={item.href} className="text-gray-400 hover:text-gray-500 dark:text-gray-500 dark:hover:text-gray-400">
               <span className="sr-only">{item.name}</span>
               <item.icon className="w-6 h-6" aria-hidden="true" />
             </a>
           ))}
         </div>
-        <p className="mt-10 text-xs leading-5 text-center text-gray-500">
-          &copy; 2023 Alexandru Nastase. All rights reserved.
+        <p className="mt-10 text-xs leading-5 text-center text-gray-500 dark:text-gray-400">
+          &copy; {new Date().getFullYear()} Alexandru Nastase. All rights reserved.
         </p>
       </div>
     </footer>

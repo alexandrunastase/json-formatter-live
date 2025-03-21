@@ -1,178 +1,390 @@
 import Image from 'next/image'
+import React, {useState, useCallback, useEffect} from 'react'
+import dynamic from 'next/dynamic'
+import {EditorButtons} from '@/components/EditorButtons';
+
+// Dynamically import CodeMirror components with no SSR
+const CodeMirror = dynamic(() => import('@uiw/react-codemirror'), {ssr: false});
 
 export default function Home() {
-  return (
-    <main className="flex flex-col items-center justify-between min-h-screen p-24">
-      <div class="shadow-lg dark:shadow-lg-dark rounded-lg" >
-  <div
-    class="bg-wash dark:bg-card-dark flex justify-between items-center relative z-10 border-b border-border dark:border-border-dark rounded-t-lg text-lg"
-  >
-    <div class="flex-1 grow min-w-0 px-4 lg:px-6">
-      <div>
-        <div class="relative overflow-hidden">
-          <div class="w-[fit-content] invisible">
-            <div class="sp-tabs" translate="no">
-              <div
-                aria-label="Select active file"
-                class="sp-tabs-scrollable-container"
-                role="tablist"
-              >
-                <button
-                  aria-selected="true"
-                  class="sp-tab-button"
-                  data-active="true"
-                  role="tab"
-                  title="/App.js"
-                  type="button"
-                >
-                  App.js
-                </button>
-              </div>
-            </div>
-          </div>
-          <button
-            class="absolute top-0 left-[2px]"
-            id="headlessui-listbox-button-:rd:"
-            aria-haspopup="true"
-            aria-expanded="false"
-            data-headlessui-state=""
-            type="button"
-          >
-            <span
-              class="h-full py-2 px-1 mt-px -mb-px flex border-b text-link dark:text-link-dark border-link dark:border-link-dark items-center text-md leading-tight truncate"
-              
-              >App.js</span
-            >
-          </button>
-        </div>
-      </div>
-    </div>
-    <div class="px-3 flex items-center justify-end text-right" translate="yes">
-      <button
-        class="text-sm text-primary dark:text-primary-dark inline-flex items-center hover:text-link duration-100 ease-in transition mx-1"
-        title="Download Sandbox"
-        type="button"
-      >
-        <svg
-          width="1em"
-          height="1em"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          class="inline mr-1"
-        >
-          <path
-            d="M20.5 22H3.5C3.10218 22 2.72064 21.842 2.43934 21.5607C2.15804 21.2794 2 20.8978 2 20.5V15.5C2 15.3674 2.05268 15.2402 2.14645 15.1464C2.24021 15.0527 2.36739 15 2.5 15H3.5C3.63261 15 3.75979 15.0527 3.85355 15.1464C3.94732 15.2402 4 15.3674 4 15.5V20H20V15.5C20 15.3674 20.0527 15.2402 20.1464 15.1464C20.2402 15.0527 20.3674 15 20.5 15H21.5C21.6326 15 21.7598 15.0527 21.8536 15.1464C21.9473 15.2402 22 15.3674 22 15.5V20.5C22 20.8978 21.842 21.2794 21.5607 21.5607C21.2794 21.842 20.8978 22 20.5 22Z"
-            fill="currentColor"
-          ></path>
-          <path
-            d="M10.9999 2.5V13.79L8.81994 11.61C8.72479 11.5178 8.59747 11.4662 8.46494 11.4662C8.33241 11.4662 8.20509 11.5178 8.10994 11.61L7.39994 12.32C7.30769 12.4151 7.2561 12.5425 7.2561 12.675C7.2561 12.8075 7.30769 12.9348 7.39994 13.03L10.9399 16.56C11.0785 16.7003 11.2436 16.8117 11.4255 16.8877C11.6075 16.9637 11.8027 17.0029 11.9999 17.0029C12.1971 17.0029 12.3924 16.9637 12.5743 16.8877C12.7563 16.8117 12.9214 16.7003 13.0599 16.56L16.5999 13C16.6922 12.9048 16.7438 12.7775 16.7438 12.645C16.7438 12.5125 16.6922 12.3851 16.5999 12.29L15.8899 11.58C15.7948 11.4878 15.6675 11.4362 15.5349 11.4362C15.4024 11.4362 15.2751 11.4878 15.1799 11.58L12.9999 13.79V2.5C12.9999 2.36739 12.9473 2.24021 12.8535 2.14645C12.7597 2.05268 12.6325 2 12.4999 2H11.4999C11.3673 2 11.2402 2.05268 11.1464 2.14645C11.0526 2.24021 10.9999 2.36739 10.9999 2.5Z"
-            fill="currentColor"
-          ></path>
-        </svg>
-        Download</button
-      ><button
-        class="text-sm text-primary dark:text-primary-dark inline-flex items-center hover:text-link duration-100 ease-in transition mx-1"
-        title="Reset Sandbox"
-        type="button"
-      >
-        <svg
-          width="1em"
-          height="1em"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          class="inline ml-1 mr-1 relative"
-        >
-          <path
-            d="M13.8982 5.20844C12.4626 4.88688 10.9686 4.93769 9.55821 5.35604L11.8524 3.06184C11.8989 3.0154 11.9357 2.96028 11.9608 2.89961C11.986 2.83894 11.9989 2.77391 11.9989 2.70824C11.9989 2.64256 11.986 2.57754 11.9608 2.51686C11.9357 2.45619 11.8989 2.40107 11.8524 2.35464L11.1456 1.64784C11.0992 1.60139 11.0441 1.56455 10.9834 1.53942C10.9227 1.51428 10.8577 1.50134 10.792 1.50134C10.7263 1.50134 10.6613 1.51428 10.6006 1.53942C10.54 1.56455 10.4848 1.60139 10.4384 1.64784L6.14571 5.94054C6.00654 6.07969 5.89615 6.2449 5.82083 6.42673C5.74551 6.60855 5.70675 6.80343 5.70675 7.00024C5.70675 7.19704 5.74551 7.39192 5.82083 7.57374C5.89615 7.75557 6.00654 7.92078 6.14571 8.05994L10.4387 12.3529C10.5325 12.4465 10.6595 12.4991 10.792 12.4991C10.9245 12.4991 11.0516 12.4465 11.1453 12.3529L11.8527 11.6455C11.9463 11.5518 11.9989 11.4247 11.9989 11.2922C11.9989 11.1598 11.9463 11.0327 11.8527 10.9389L8.77481 7.86104C9.99795 7.16236 11.415 6.8801 12.8125 7.05678C14.21 7.23347 15.5122 7.85953 16.523 8.84064C17.5338 9.82176 18.1983 11.1048 18.4165 12.4964C18.6347 13.888 18.3947 15.3129 17.7328 16.5562C17.0708 17.7996 16.0227 18.7942 14.7463 19.3902C13.47 19.9861 12.0345 20.1511 10.6563 19.8603C9.27798 19.5695 8.03152 18.8387 7.10469 17.778C6.17786 16.7172 5.62086 15.384 5.51761 13.9791C5.51156 13.8512 5.45689 13.7303 5.36477 13.6413C5.27265 13.5522 5.15001 13.5017 5.02191 13.5H4.02081C3.95297 13.4996 3.88574 13.5129 3.8232 13.5392C3.76065 13.5655 3.70408 13.6042 3.6569 13.6529C3.60972 13.7017 3.57291 13.7595 3.54869 13.8228C3.52448 13.8862 3.51336 13.9538 3.51601 14.0216C3.61349 15.5965 4.1473 17.1132 5.0577 18.4019C5.9681 19.6906 7.21917 20.7006 8.6709 21.3188C10.1226 21.937 11.7178 22.139 13.2778 21.9022C14.8378 21.6654 16.3011 20.9992 17.504 19.978C18.7069 18.9569 19.6019 17.6212 20.0889 16.1203C20.5759 14.6195 20.6356 13.0128 20.2614 11.4799C19.8872 9.94705 19.0938 8.54858 17.97 7.44098C16.8462 6.33339 15.4363 5.56037 13.8982 5.20844V5.20844Z"
-            fill="currentColor"
-          ></path>
-        </svg>
-        Reset</button
-      ><a
-        href="https://codesandbox.io/api/v1/sandboxes/define?parameters=N4IgZglgNgpgziAXKAggBzQOgFYOSAYwHsA7AFxnKXAFcSCyJSACAWQE8AhGss0gCgCUzYAB0SzZgCcYZGlIn9xkyQB4ARjz4kAfMpWSAkgHIAtswCGzTb1L61Aehva9E5oIDc4gL7jxMAA80IikyZgATGDALGigwsDoGJgkOdDQhEX0ZOQVmJTc1cIgAN1cDNQALAEYdAHUYKGJTGGY-ZlN2SwxVB2qy8tUOblsJB37HItL9Tx9xEAAaEAg4TggSCyl2JGioOBhvRbXIgJw8UGJySjJqCFNg0OYAJRgLBnmRZgBlMikIBlYiJFmN5mGApERzKIQDJXmQoV4SLd7mFgMwCDCKI8iEQwiCwRDmFCYQwALThCEOAhQCBXeHiJEhMJQzAOOBkdiwOCYAhwOB0kj0u6M5hpUHgyEgFlpfniC5s6TYsIAXjRGJgWJx_HJBBozXImAA5rIAKKwPVkTjsQzhJTQxVQwQzEjgnGYGQkSJSfJqb6_f6AmDjZiqUVjfQ9X1_MgAyKuTwLJYrNYbLaIHZ7A4gNkc-Dc3lIc6kChURAgABUmTc6iIARJcAgAC81gbENYQp6SdWAgjfAKSNXwp0xG4wEWSdFTNB2K24BYSHA6zBfmAEZJTBsDWtWwAmAAMaG7-jQFnCRRILeYu57fhI1Ura43axJfDQrav-lH5DrjZgO-3B-vPsKm3e92kfEhnyIV9L1XUEx3rBtf2YPcANmICAGZQPXKRNwgl831gz8yG_RDWyqAAOVCSF7cQKgAFiw8DIOg98R3gn8yIANiomjbwAVkYnCn3wmCP3Y0jmCqOieJvCpOME3DmIIsSvwQpCqn_Q9qJvYggWHSQiJI9TMG3GBTEA8RYlA49T2bElYDAMgd33LTeITZZVnWTZtgsXZ9kWNAaHUakCAcI5AkwCoyFMKAC0IIsrmoVQAEIABEAHkAGEABUAE0AAVjWYKKYtcVQSqgZgoDnA0lShSgoX6cqXnCINVGaMgrAICoNj2Mg6pAABVbKADESXIxr7GDDqrHWZoBuKGkAHdkShNEEvIAalogcIyAqJVIkWggYBJbbdoqd41ggRhfLrAhfJgJUqkwXdJoKYNGDIWAdFSogdXNHpPu-8NehapqB3YNrJmYHaBpdOEQB0HpJiapxAUh8QegqnR3KTLzU3TfyQGPAgAGsLCNU5SDii5i2uUt9MJEBIjQShInoGk-SQUDJCJF4GChVsoQAPQol6XqheYpr52EyQhQWmdF8jxdehZpehfniLgdEIDQMguaFkBhb4lWoX0A59Chdc1gVqEwo9CLcEly3mZgYpUpgVmHY5-AFeAXtvFxzyUx8vzvEzCg7mqihqHRF4KBJYliIsDAQG8IA&amp;query=file%3D%252FApp.js%26utm_medium%3Dsandpack"
-        rel="noreferrer noopener"
-        target="_blank"
-        title="Open in CodeSandbox"
-        class="text-sm text-primary dark:text-primary-dark inline-flex items-center hover:text-link duration-100 ease-in transition mx-1 ml-2 md:ml-1"
-        ><svg
-          width="1em"
-          height="1em"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          class="inline ml-1 mr-1 relative top-[1px]"
-        >
-          <path
-            d="M20.5001 2H15.5001C15.3675 2 15.2403 2.05268 15.1465 2.14645C15.0528 2.24021 15.0001 2.36739 15.0001 2.5V3.5C15.0001 3.63261 15.0528 3.75979 15.1465 3.85355C15.2403 3.94732 15.3675 4 15.5001 4H18.5901L7.6501 14.94C7.60323 14.9865 7.56604 15.0418 7.54065 15.1027C7.51527 15.1636 7.5022 15.229 7.5022 15.295C7.5022 15.361 7.51527 15.4264 7.54065 15.4873C7.56604 15.5482 7.60323 15.6035 7.6501 15.65L8.3501 16.35C8.39658 16.3969 8.45188 16.4341 8.51281 16.4594C8.57374 16.4848 8.63909 16.4979 8.7051 16.4979C8.7711 16.4979 8.83646 16.4848 8.89738 16.4594C8.95831 16.4341 9.01362 16.3969 9.0601 16.35L20.0001 5.41V8.5C20.0001 8.63261 20.0528 8.75979 20.1465 8.85355C20.2403 8.94732 20.3675 9 20.5001 9H21.5001C21.6327 9 21.7599 8.94732 21.8537 8.85355C21.9474 8.75979 22.0001 8.63261 22.0001 8.5V3.5C22.0001 3.10218 21.8421 2.72064 21.5608 2.43934C21.2795 2.15804 20.8979 2 20.5001 2V2Z"
-            fill="currentColor"
-          ></path>
-          <path
-            d="M21.5 13H20.5C20.3674 13 20.2402 13.0527 20.1464 13.1464C20.0527 13.2402 20 13.3674 20 13.5V20H4V4H10.5C10.6326 4 10.7598 3.94732 10.8536 3.85355C10.9473 3.75979 11 3.63261 11 3.5V2.5C11 2.36739 10.9473 2.24021 10.8536 2.14645C10.7598 2.05268 10.6326 2 10.5 2H3.5C3.10218 2 2.72064 2.15804 2.43934 2.43934C2.15804 2.72064 2 3.10218 2 3.5V20.5C2 20.8978 2.15804 21.2794 2.43934 21.5607C2.72064 21.842 3.10218 22 3.5 22H20.5C20.8978 22 21.2794 21.842 21.5607 21.5607C21.842 21.2794 22 20.8978 22 20.5V13.5C22 13.3674 21.9473 13.2402 21.8536 13.1464C21.7598 13.0527 21.6326 13 21.5 13Z"
-            fill="currentColor"
-          ></path></svg
-        ><span class="hidden md:block">Fork</span></a
-      >
-    </div>
-  </div>
-  <div class="sp-layout sp-layout-expanded">
-    <div class="sp-stack sp-editor">
-      <div class="sp-code-editor">
+    const [isDark, setIsDark] = React.useState(false);
+    const [code, setCode] = React.useState('');
+    const [editorRef, setEditorRef] = React.useState(null);
+    const [lightTheme, setLightTheme] = React.useState(null);
+    const [darkTheme, setDarkTheme] = React.useState(null);
+    const [extensions, setExtensions] = React.useState(null);
+    const [isLoaded, setIsLoaded] = React.useState(false);
+    
+    // Load all CodeMirror dependencies
+    React.useEffect(() => {
+        async function loadDependencies() {
+            try {
+                // Load modules
+                const {createTheme} = await import('@uiw/codemirror-themes');
+                const {json} = await import('@codemirror/lang-json');
+                const {linter, lintGutter} = await import('@codemirror/lint');
+                const {EditorView} = await import('@codemirror/view');
+                const {tags} = await import('@lezer/highlight');
+                const {defaultKeymap, history, historyKeymap} = await import('@codemirror/commands');
+                const {keymap} = await import('@codemirror/view');
+                
+                // Create the extensions array directly
+                const editorExtensions = [
+                    json(),
+                    EditorView.lineWrapping,
+                    lintGutter(),
+                    linter(jsonLinter, {delay: 300}),
+                    keymap.of([
+                        ...defaultKeymap,
+                        ...historyKeymap,
+                    ]),
+                    history(),
+                ];
+                
+                // Set extensions to state
+                setExtensions(editorExtensions);
+                
+                // Create themes
+                const light = createTheme({
+                    dark: 'light',
+                    settings: {
+                        background: '#ffffff',
+                        foreground: '#24292e',
+                        caret: '#24292e',
+                        selection: '#e9e9ed',
+                        selectionMatch: '#c2dbfc',
+                        gutterBackground: '#ffffff',
+                        gutterForeground: '#6e7781',
+                        gutterBorder: '#e1e4e8',
+                        gutterActiveForeground: '#24292e',
+                        lineHighlight: '#f6f8fa',
+                    },
+                    styles: [
+                        {tag: tags.definition(tags.typeName), color: '#0550ae'},
+                        {tag: tags.typeName, color: '#953800'},
+                        {tag: tags.tagName, color: '#116329'},
+                        {tag: tags.variableName, color: '#953800'},
+                        {tag: tags.propertyName, color: '#0550ae'},
+                        {tag: tags.string, color: '#0a3069'},
+                        {tag: tags.comment, color: '#6e7781'},
+                        {tag: tags.meta, color: '#24292e'},
+                        {tag: tags.keyword, color: '#cf222e'},
+                        {tag: tags.number, color: '#0550ae'},
+                        {tag: tags.operator, color: '#24292e'},
+                        {tag: tags.punctuation, color: '#24292e'},
+                        {tag: tags.invalid, color: '#82071e'},
+                        {tag: tags.link, color: '#0969da', textDecoration: 'underline'}
+                    ],
+                });
+                
+                const dark = createTheme({
+                    dark: 'dark',
+                    settings: {
+                        background: '#18181b', // zinc-900 to match the container
+                        foreground: '#c9d1d9',
+                        caret: '#c9d1d9',
+                        selection: '#3b4351',
+                        selectionMatch: '#3b4351',
+                        gutterBackground: '#18181b', // zinc-900 to match the container
+                        gutterForeground: '#8b949e',
+                        gutterBorder: '#27272a', // zinc-800
+                        gutterActiveForeground: '#c9d1d9',
+                        lineHighlight: '#27272a', // zinc-800
+                    },
+                    styles: [
+                        {tag: tags.definition(tags.typeName), color: '#79c0ff'},
+                        {tag: tags.typeName, color: '#ff7b72'},
+                        {tag: tags.tagName, color: '#7ee787'},
+                        {tag: tags.variableName, color: '#ffa657'},
+                        {tag: tags.propertyName, color: '#79c0ff'},
+                        {tag: tags.string, color: '#a5d6ff'},
+                        {tag: tags.comment, color: '#8b949e'},
+                        {tag: tags.meta, color: '#c9d1d9'},
+                        {tag: tags.keyword, color: '#ff7b72'},
+                        {tag: tags.number, color: '#79c0ff'},
+                        {tag: tags.operator, color: '#c9d1d9'},
+                        {tag: tags.punctuation, color: '#c9d1d9'},
+                        {tag: tags.invalid, color: '#f85149'},
+                        {tag: tags.link, color: '#58a6ff', textDecoration: 'underline'}
+                    ],
+                });
+                
+                setLightTheme(light);
+                setDarkTheme(dark);
+                setIsLoaded(true);
+            } catch (error) {
+                console.error("Failed to load CodeMirror dependencies:", error);
+            }
+        }
+        
+        loadDependencies();
+    }, [isDark]);
+    
+    // Define jsonLinter function inside the component
+    const jsonLinter = useCallback((view) => {
+        const diagnostics = [];
+        const text = view.state.doc.toString();
+        if (!text.trim()) return diagnostics;
+        
+        try {
+            JSON.parse(text);
+        } catch (e) {
+            // Parse the error message to get position information
+            const posMatch = e.message.match(/position\s+(\d+)/i);
+            const lineMatch = e.message.match(/line\s+(\d+)\s+column\s+(\d+)/i);
+            
+            let pos = 0;
+            
+            if (lineMatch) {
+                // If we have line and column information
+                const line = parseInt(lineMatch[1], 10) - 1; // 0-based line index
+                const col = parseInt(lineMatch[2], 10) - 1;  // 0-based column index
+                
+                // Calculate position in the document
+                const lines = text.split('\n');
+                pos = 0;
+                for (let i = 0; i < line; i++) {
+                    pos += lines[i].length + 1; // +1 for newline
+                }
+                pos += col;
+            } else if (posMatch) {
+                // If we only have position information
+                pos = parseInt(posMatch[1], 10);
+            }
+            
+            // Find the token boundaries around the error position
+            let from = Math.max(0, pos - 1);
+            let to = Math.min(pos + 1, text.length);
+            
+            // Try to expand to include the full token
+            while (from > 0 && /[^\s,\[\]{}:]/.test(text.charAt(from - 1))) from--;
+            while (to < text.length && /[^\s,\[\]{}:]/.test(text.charAt(to))) to++;
+            
+            // Ensure we highlight at least one character
+            if (from === to) to = from + 1;
+            
+            diagnostics.push({
+                from,
+                to,
+                severity: 'error',
+                message: e.message
+            });
+        }
+        return diagnostics;
+    }, []);
+    
+    
+    const setEditorContent = function (view, content) {
+        view.dispatch({
+            changes: {
+                from: 0,
+                to: view.state.doc.length,
+                insert: content
+            }
+        });
+    };
+    
+    const handleFormat = React.useCallback(() => {
+        try {
+            const currentContent = editorRef.state.doc.toString();
+            
+            const parsed = JSON.parse(currentContent);
+            const formatted = JSON.stringify(parsed, null, 2);
+            
+            setEditorContent(editorRef, formatted);
+        } catch (e) {
+            alert('Invalid JSON: ' + e.message);
+        }
+        
+        
+    }, [editorRef]);
+    
+    const handleMinify = React.useCallback(() => {
+        try {
+            // Get current content from editor
+            const currentContent = editorRef.state.doc.toString();
+            
+            // Parse and minify the JSON
+            const parsed = JSON.parse(currentContent);
+            const minified = JSON.stringify(parsed);
+            
+            setEditorContent(editorRef, minified);
+        } catch (e) {
+            alert('Invalid JSON: ' + e.message);
+        }
+    }, [editorRef]);
+    
+    const handleCopy = React.useCallback(() => {
+        try {
+            if (editorRef) {
+                const currentContent = editorRef.state.doc.toString();
+                navigator.clipboard.writeText(currentContent)
+                    .then(() => {
+                        // Show a temporary success message
+                        const copyButton = document.getElementById('copy-button');
+                        if (copyButton) {
+                            const originalText = copyButton.innerText;
+                            copyButton.innerText = 'Copied!';
+                            setTimeout(() => {
+                                copyButton.innerText = originalText;
+                            }, 2000);
+                        }
+                    })
+                    .catch(err => {
+                        console.error('Failed to copy text: ', err);
+                        alert('Failed to copy to clipboard');
+                    });
+            }
+        } catch (e) {
+            console.error('Copy failed:', e);
+            alert('Failed to copy to clipboard');
+        }
+    }, [editorRef]);
+    
+    React.useEffect(() => {
+        // Check initial dark mode
+        setIsDark(document.documentElement.classList.contains('dark'));
+        
+        // Listen for changes to dark mode
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.attributeName === 'class') {
+                    setIsDark(document.documentElement.classList.contains('dark'));
+                }
+            });
+        });
+        
+        observer.observe(document.documentElement, {attributes: true});
+        
+        // Add keyboard shortcuts
+        const handleKeyDown = (e) => {
+            // Alt+Shift+F for format
+            if (e.altKey && e.shiftKey && e.key === 'F') {
+                e.preventDefault();
+                handleFormat();
+            }
+            // Alt+Shift+M for minify
+            if (e.altKey && e.shiftKey && e.key === 'M') {
+                e.preventDefault();
+                handleMinify();
+            }
+        };
+        
+        document.addEventListener('keydown', handleKeyDown);
+        
+        return () => {
+            observer.disconnect();
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [handleFormat, handleMinify]);
+    
+    const onChange = React.useCallback((value, viewUpdate) => {
+        setCode(value);
+    }, []);
+    const defaultValue = {
+        "Hint": "JSON goes here",
+        "Step 1": "Ctrl + V to paste code (it's selected by default)",
+        "Step 2": "Alt + Shift + F to format",
+        "Keyboard Shortcuts": {
+            "Ctrl + A": "Select all text",
+            "Ctrl + X": "Cut current line",
+            "Alt + Shift + F": "Format",
+            "Alt + Shift + M": "Minify"
+        }
+    };
+    
+    return (
         <div
-          aria-autocomplete="list"
-          aria-label="Code Editor for App.js"
-          aria-multiline="true"
-          class="sp-cm sp-pristine sp-javascript"
-          role="textbox"
-          tabindex="0"
-          translate="no"
-        >
-         
+            className="flex min-h-64 flex-col justify-center overflow-hidden bg-gray-50 dark:bg-zinc-800 mt-12 max-w-full transition-colors duration-150">
+            <div
+                className="h-full border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-zinc-900 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 dark:ring-gray-100/5 sm:rounded-lg sm:px-10 mx-6 mb-16 editor-container transition-colors duration-150 relative">
+                <div className="absolute top-4 right-6 z-10">
+                    <button
+                        id="copy-button"
+                        onClick={handleCopy}
+                        disabled={!isLoaded}
+                        className={`inline-flex items-center px-3 py-2 text-sm font-medium rounded-md ${isLoaded ? 'text-gray-700 dark:text-gray-300 bg-white dark:bg-zinc-800 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-zinc-700' : 'text-gray-400 dark:text-gray-500 bg-white dark:bg-zinc-800 border border-gray-200 dark:border-gray-700 cursor-not-allowed'} focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-blue-400 dark:focus:ring-offset-zinc-800 transition-colors duration-150`}
+                        title="Copy to clipboard"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
+                             stroke="currentColor" className="w-5 h-5 mr-1">
+                            <path strokeLinecap="round" strokeLinejoin="round"
+                                  d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/>
+                        </svg>
+                        Copy
+                    </button>
+                </div>
+                <div className="w-full h-full">
+                    {isLoaded && extensions ? (
+                        <CodeMirror
+                            autocompletion="false"
+                            linenumbers="true"
+                            theme={isDark ? darkTheme : lightTheme}
+                            value={JSON.stringify(defaultValue, null, 2)}
+                            minHeight="100%"
+                            extensions={extensions}
+                            onChange={onChange}
+                            onCreateEditor={(editor) => {
+                                setEditorRef(editor);
+                                // Initialize code state with the default value
+                                setCode(JSON.stringify(defaultValue, null, 2));
+                                
+                                // Focus on the editor and select all text
+                                setTimeout(() => {
+                                    editor.focus();
+                                    // Select all text in the editor
+                                    editor.dispatch({
+                                        selection: {anchor: 0, head: editor.state.doc.length}
+                                    });
+                                }, 100);
+                            }}
+                            basicSetup={{
+                                lineNumbers: true,
+                                highlightActiveLine: true,
+                                highlightSelectionMatches: true,
+                                syntaxHighlighting: true,
+                                foldGutter: true,
+                                dropCursor: true,
+                                allowMultipleSelections: true,
+                                indentOnInput: true,
+                                bracketMatching: true
+                            }}
+                            className="max-w-full"
+                            id="code-editor"
+                        />
+                    ) : (
+                        <div className="flex items-center justify-center h-64">
+                            <div className="text-center space-y-4">
+                                <div className="relative w-16 h-16 mx-auto">
+                                    <div
+                                        className="absolute inset-0 bg-blue-500 dark:bg-blue-400 rounded-full opacity-75 animate-ping"></div>
+                                    <div
+                                        className="relative rounded-full w-16 h-16 bg-blue-500 dark:bg-blue-400 flex items-center justify-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
+                                             strokeLinecap="round"
+                                             strokeLinejoin="round" strokeWidth="2"
+                                             className="w-10 h-10 text-white p-2 bg-blue-500 rounded-full"
+                                             viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round"
+                                                  d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                {/*<p className="text-gray-700 dark:text-gray-300 font-medium">Loading editor...</p>*/}
+                            </div>
+                        </div>
+                    )}
+                </div>
+                <div className="absolute bottom-4 right-6">
+                    <EditorButtons
+                        onFormat={handleFormat}
+                        onMinify={handleMinify}
+                        onCopy={handleCopy}
+                        isLoaded={isLoaded}
+                    />
+                </div>
+            </div>
+            
         </div>
-      </div>
-    </div>
-    <div class="sp-stack order-last xl:order-2">
-      <div
-        class="p-0 sm:p-2 md:p-4 lg:p-8 bg-card dark:bg-wash-dark h-full relative md:rounded-b-lg lg:rounded-b-none"
-      >
-        <div>
-          <iframe
-            class="rounded-t-none bg-white md:shadow-md sm:rounded-lg w-full max-w-full transition-opacity opacity-100 duration-150"
-            title="Sandbox Preview"
-            sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-          ></iframe>
-        </div>
-      </div>
-    </div>
-    <button
-      translate="yes"
-      class="sandpack-expand flex text-base justify-between dark:border-card-dark bg-wash dark:bg-card-dark items-center z-10 p-1 w-full order-2 xl:order-last border-b-1 relative top-0"
-    >
-      <span
-        class="flex p-2 focus:outline-none text-primary dark:text-primary-dark leading-[20px]"
-        ><svg
-          class="rotate-180 inline mr-1.5 text-xl"
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          viewBox="0 0 20 20"
-        >
-          <g fill="none" fill-rule="evenodd" transform="translate(-446 -398)">
-            <path
-              fill="currentColor"
-              fill-rule="nonzero"
-              d="M95.8838835,240.366117 C95.3957281,239.877961 94.6042719,239.877961 94.1161165,240.366117 C93.6279612,240.854272 93.6279612,241.645728 94.1161165,242.133883 L98.6161165,246.633883 C99.1042719,247.122039 99.8957281,247.122039 100.383883,246.633883 L104.883883,242.133883 C105.372039,241.645728 105.372039,240.854272 104.883883,240.366117 C104.395728,239.877961 103.604272,239.877961 103.116117,240.366117 L99.5,243.982233 L95.8838835,240.366117 Z"
-              transform="translate(356.5 164.5)"
-            ></path>
-            <polygon points="446 418 466 418 466 398 446 398"></polygon>
-          </g></svg
-        >Show less</span
-      >
-    </button>
-  </div>
-</div>
-
-    </main>
-  )
+    )
 }
