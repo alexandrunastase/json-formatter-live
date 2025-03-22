@@ -1,37 +1,27 @@
 {
-  "name": "json-formatter-live",
-  "version": "2.0.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start -p 3080",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@codemirror/lang-javascript": "^6.2.3",
-    "@codemirror/lang-json": "^6.0.1",
-    "@codemirror/lint": "^6.8.4",
-    "@codemirror/view": "^6.36.4",
-    "@headlessui/react": "^2.2.0",
-    "@heroicons/react": "^2.2.0",
-    "@lezer/highlight": "^1.2.1",
-    "@uiw/codemirror-themes": "^4.23.10",
-    "@uiw/react-codemirror": "^4.23.10",
-    "autoprefixer": "10.4.21",
-    "codemirror": "^6.0.1",
-    "eslint": "9.22.0",
-    "eslint-config-next": "15.2.3",
-    "next": "15.2.3",
-    "postcss": "8.5.3",
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
-    "sass": "^1.86.0",
-    "tailwindcss": "^3.3.0"
-  },
-  "devDependencies": {
-    "@types/node": "22.13.11",
-    "@types/react": "19.0.12",
-    "cssnano": "^7.0.6"
-  }
+    "name": "nunjucks-static-site",
+    "version": "1.0.0",
+    "description": "Static site with HTML templates and HMR",
+    "type": "module",
+    "scripts": {
+        "start": "node serve.js",
+        "dev": "node serve.js",
+        "build": "node build.js"
+    },
+    "keywords": [
+        "nunjucks",
+        "static-site",
+        "html-templates"
+    ],
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+        "fs-extra": "^11.2.0",
+        "nunjucks": "^3.2.4",
+        "fast-glob": "^3.3.2"
+    },
+    "devDependencies": {
+        "sirv-cli": "^2.0.2",
+        "node-watch": "^0.7.4"
+    }
 }

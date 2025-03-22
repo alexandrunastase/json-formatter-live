@@ -94,11 +94,11 @@
 
 /* Selection styles */
 .cm-editor .cm-selectionBackground {
-    background-color: rgba(100, 100, 255, 0.2) !important;
+    background-color: rgba(98, 98, 154, 0.2) !important;
 }
 
 .dark .cm-editor .cm-selectionBackground {
-    background-color: rgba(120, 120, 255, 0.3) !important;
+    background-color: rgba(187, 187, 243, 0.3) !important;
 }
 
 /* Improve cursor visibility */
