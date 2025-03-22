@@ -18,3 +18,6 @@ install-cert:
 
 uninstall-cert:
 	 mkcert -uninstall ./certs/jsonformatter.localhost
+
+serve:
+	bun
