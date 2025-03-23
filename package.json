@@ -4,9 +4,9 @@
     "description": "Static site with HTML templates and HMR",
     "type": "module",
     "scripts": {
-        "start": "node serve.js",
-        "dev": "node serve.js",
-        "build": "node build.js"
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview"
     },
     "keywords": [
         "nunjucks",
@@ -16,12 +16,23 @@
     "author": "",
     "license": "MIT",
     "dependencies": {
-        "fs-extra": "^11.2.0",
+        "@vituum/vite-plugin-tailwindcss": "^1.2.0",
+        "@vituum/vite-plugin-twig": "^1.1.0",
         "nunjucks": "^3.2.4",
-        "fast-glob": "^3.3.2"
+        "vituum": "^1.2.0"
     },
     "devDependencies": {
-        "sirv-cli": "^2.0.2",
-        "node-watch": "^0.7.4"
+        "@codemirror/commands": "^6.8.0",
+        "@codemirror/lang-json": "^6.0.1",
+        "@codemirror/lint": "^6.8.4",
+        "@codemirror/state": "^6.5.2",
+        "@codemirror/view": "^6.36.4",
+        "autoprefixer": "^10.4.21",
+        "codemirror": "^6.0.1",
+        "fast-glob": "^3.3.3",
+        "fs-extra": "^11.3.0",
+        "postcss": "^8.5.3",
+        "tailwindcss": "^4.0.15",
+        "vite": "^6.2.2"
     }
 }
