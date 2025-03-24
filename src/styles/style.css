@@ -2,21 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    font-family: 'Ubuntu', system-ui, sans-serif;
+  }
+  
+  code, pre, .cm-editor {
+    font-family: 'Ubuntu Mono', monospace;
+  }
+}
+
 /* Animation for error wiggle */
 @keyframes wiggle {
-    0%, 100% {
+    0% {
         transform: translateX(0);
     }
-    25% {
-        transform: translateX(-5px);
+    20% {
+        transform: translateX(-4px);
     }
-    75% {
-        transform: translateX(5px);
+    40% {
+        transform: translateX(4px);
+    }
+    60% {
+        transform: translateX(-4px);
+    }
+    80% {
+        transform: translateX(4px);
+    }
+    100% {
+        transform: translateX(0);
     }
 }
 
 .wiggle {
-    animation: wiggle 0.3s ease-in-out 2;
+    animation: wiggle 0.5s ease;
 }
 
 /* Custom styles for editor */
@@ -49,8 +68,9 @@ body {
 }
 
 .dark body {
-    background: #18181b; /* solid zinc-900 background */
+    background: #1a1d21; /* Slack-like dark background */
     background-image: none; /* ensure no gradient in dark mode */
+    color: #d1d2d3; /* Slack-like text color */
 }
 
 /* Remove firefox borders */
@@ -98,28 +118,4 @@ body {
     background-color: #22c55e;
 }
 
-/* Wiggle animation for button error feedback */
-@keyframes wiggle {
-    0% {
-        transform: translateX(0);
-    }
-    20% {
-        transform: translateX(-4px);
-    }
-    40% {
-        transform: translateX(4px);
-    }
-    60% {
-        transform: translateX(-4px);
-    }
-    80% {
-        transform: translateX(4px);
-    }
-    100% {
-        transform: translateX(0);
-    }
-}
-
-.wiggle {
-    animation: wiggle 0.5s ease;
-}
+/* This duplicate wiggle animation definition has been removed */

@@ -1,10 +1,10 @@
 // Import CodeMirror modules
-import { EditorState } from '@codemirror/state';
-import { EditorView, basicSetup } from 'codemirror';
-import { json } from '@codemirror/lang-json';
-import { linter, lintGutter } from '@codemirror/lint';
-import { keymap } from '@codemirror/view';
-import { indentWithTab } from '@codemirror/commands';
+import {EditorState} from '@codemirror/state';
+import {EditorView, basicSetup} from 'codemirror';
+import {json} from '@codemirror/lang-json';
+import {linter, lintGutter} from '@codemirror/lint';
+import {keymap} from '@codemirror/view';
+import {indentWithTab} from '@codemirror/commands';
 
 // Initialize variables
 let editorView;
@@ -23,10 +23,10 @@ const defaultValue = {
 };
 
 // Initialize editor when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   const editorContainer = document.getElementById('editor-container');
   if (!editorContainer) return;
-
+  
   // Create custom theme extension
   const lightTheme = EditorView.theme({
     "&": {
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
     ],
     parent: editorContainer
   });
-
+  
   // Select all text initially
   setTimeout(() => {
     const docLength = editorView.state.doc.length;
@@ -123,19 +123,19 @@ document.addEventListener('DOMContentLoaded', function() {
   if (formatButton) {
     formatButton.addEventListener('click', formatJSON);
   }
-
+  
   // Minify button functionality
   const minifyButton = document.getElementById('minify-button');
   if (minifyButton) {
     minifyButton.addEventListener('click', minifyJSON);
   }
-
+  
   // Copy button functionality
   const copyButton = document.getElementById('copy-button');
   if (copyButton) {
     copyButton.addEventListener('click', copyToClipboard);
   }
-
+  
   // Add keyboard shortcuts
   document.addEventListener('keydown', handleKeyDown);
 });
@@ -202,7 +202,7 @@ function copyToClipboard() {
         copyButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-1"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>Copied!';
         setTimeout(() => {
           copyButton.innerHTML = originalText;
-        }, 2000);
+        }, 1000);
       })
       .catch((e) => {
         console.error('Copy failed:', e);
@@ -237,4 +237,4 @@ function handleKeyDown(e) {
 }
 
 // Export functions for use in other modules
-export { formatJSON, minifyJSON, copyToClipboard };
+export {formatJSON, minifyJSON, copyToClipboard};

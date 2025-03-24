@@ -1,3 +1,2 @@
-- Add ubuntu and ubuntu mono fonts to the editor without using google fonts
 - add playwright tests
-- move fonts locally, maybe add ubuntu font
+- Add tests for keyboard shortcuts
