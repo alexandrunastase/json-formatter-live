@@ -1,38 +1,31 @@
 {
-    "name": "nunjucks-static-site",
-    "version": "1.0.0",
-    "description": "Static site with HTML templates and HMR",
-    "type": "module",
-    "scripts": {
-        "dev": "vite",
-        "build": "vite build",
-        "preview": "vite preview"
-    },
-    "keywords": [
-        "nunjucks",
-        "static-site",
-        "html-templates"
-    ],
-    "author": "",
-    "license": "MIT",
-    "dependencies": {
-        "@vituum/vite-plugin-tailwindcss": "^1.2.0",
-        "@vituum/vite-plugin-twig": "^1.1.0",
-        "nunjucks": "^3.2.4",
-        "vituum": "^1.2.0"
-    },
-    "devDependencies": {
-        "@codemirror/commands": "^6.8.0",
-        "@codemirror/lang-json": "^6.0.1",
-        "@codemirror/lint": "^6.8.4",
-        "@codemirror/state": "^6.5.2",
-        "@codemirror/view": "^6.36.4",
-        "autoprefixer": "^10.4.21",
-        "codemirror": "^6.0.1",
-        "fast-glob": "^3.3.3",
-        "fs-extra": "^11.3.0",
-        "postcss": "^8.5.3",
-        "tailwindcss": "^4.0.15",
-        "vite": "^6.2.2"
-    }
+  "name": "json-formatter-live",
+  "version": "2.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 3080 --host 0.0.0.0 --no-open"
+  },
+  "keywords": [],
+  "author": "Alexandru Nastase",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@vituum/vite-plugin-tailwindcss": "^1.2.0",
+    "@vituum/vite-plugin-twig": "^1.1.0",
+    "vituum": "^1.2.0",
+    "@codemirror/commands": "^6.8.0",
+    "@codemirror/lang-json": "^6.0.1",
+    "@codemirror/lint": "^6.8.4",
+    "@codemirror/state": "^6.5.2",
+    "@codemirror/view": "^6.36.4",
+    "autoprefixer": "^10.4.21",
+    "codemirror": "^6.0.1",
+    "fast-glob": "^3.3.3",
+    "fs-extra": "^11.3.0",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.0.15",
+    "vite": "^6.2.2"
+  }
 }

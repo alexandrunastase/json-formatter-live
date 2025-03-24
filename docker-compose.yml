@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  nextjs:
+  app:
     build:
       context: .
       dockerfile: Dockerfile
@@ -22,7 +22,7 @@ services:
       - caddy_config:/config
       - ./certs:/etc/app/certs # Local certificate for jsonformatter.localhost
     depends_on:
-      - nextjs
+      - app
 
 volumes:
   caddy_data:
