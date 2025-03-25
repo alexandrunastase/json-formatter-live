@@ -2,7 +2,7 @@
 
 Keyboard first, privacy-friendly, installable JSON formatter and editor
 
-![End-to-end tests](https://github.com/alexandrunastase/json-formatter-live/workflows/tests/badge.svg?branch=next)
+![End-to-end tests](https://github.com/alexandrunastase/json-formatter-live/actions/workflows/tests.yml/badge.svg)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/dec0f7d7-666e-4b01-ab1e-b282a52ab6d5/deploy-status)](https://app.netlify.com/sites/jfl/deploys)
 
 ### Run the project for development
