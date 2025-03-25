@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview --port 3080 --no-open",
+    "preview": "vite preview --port 3080 --host --no-open",
     "test": "playwright test",
     "test:ui": "playwright test --ui"
   },
