@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    "./src/**/*.{twig,html,js,njk}",
+    "./src/**/*.{twig,html,js}",
   ],
   darkMode: 'class',
   theme: {

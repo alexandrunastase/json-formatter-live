@@ -5,7 +5,7 @@
 /* CodeMirror 6 base styles */
 .cm-editor {
     font-weight: 500;
-    font-family: 'Jetbrains Mono', monospace;
+    font-family: 'Ubuntu Mono', monospace;
     padding: 0.8em 0;
     min-height: 42vh;
     width: 100%;

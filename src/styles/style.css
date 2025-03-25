@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    font-family: 'Ubuntu', system-ui, sans-serif;
-  }
-  
-  code, pre, .cm-editor {
-    font-family: 'Ubuntu Mono', monospace;
-  }
+    html {
+        font-family: 'Ubuntu', system-ui, sans-serif;
+    }
+
+    code, pre, .cm-editor {
+        font-family: 'Ubuntu Mono', monospace;
+    }
 }
 
 /* Animation for error wiggle */
@@ -92,30 +92,3 @@ body {
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
 }
-
-/* Notification for copy success */
-#copy-notification {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    padding: 10px 20px;
-    background-color: #4ade80;
-    color: white;
-    border-radius: 4px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.3s, transform 0.3s;
-}
-
-#copy-notification.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.dark #copy-notification {
-    background-color: #22c55e;
-}
-
-/* This duplicate wiggle animation definition has been removed */

@@ -1,5 +1,6 @@
-- add playwright tests including for keyboard shortcuts
 - Add proper logos and test PWA on netlify
+- Add readme file
+- Update about and privacy pages
 
 later:
 - drag and drop json files
