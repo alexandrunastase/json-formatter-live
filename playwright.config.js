@@ -7,9 +7,11 @@ export default defineConfig({
   retries: process.env.CI ? 3 : 0,
   workers: process.env.CI ? 1 : undefined,
   reporter: 'html',
+  timeout: 30000, // Global timeout for tests: 30 seconds
   use: {
     baseURL: 'http://localhost:3080',
     trace: 'on-first-retry',
+    screenshot: 'only-on-failure',
   },
   projects: [
     {
@@ -26,5 +28,7 @@ export default defineConfig({
     url: 'http://localhost:3080',
     reuseExistingServer: !process.env.CI,
     timeout: 60000,
+    stdout: 'pipe',
+    stderr: 'pipe',
   },
 });

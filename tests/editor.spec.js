@@ -46,13 +46,18 @@ test.describe('JSON Editor Functionality', () => {
     
     // Get the editor content after formatting
     const editorContent = await page.evaluate(() => {
-      return document.querySelector('.cm-content').textContent;
+      return document.querySelector('.cm-content').textContent.trim();
     });
     
-    // Verify the content is formatted correctly (ignoring whitespace differences)
-    const parsedContent = JSON.parse(editorContent);
-    const parsedExpected = JSON.parse(formattedJson);
-    expect(JSON.stringify(parsedContent)).toBe(JSON.stringify(parsedExpected));
+    // Verify the content is formatted correctly
+    try {
+      const parsedContent = JSON.parse(editorContent);
+      const parsedExpected = JSON.parse(formattedJson);
+      expect(JSON.stringify(parsedContent)).toBe(JSON.stringify(parsedExpected));
+    } catch (e) {
+      console.error('Failed to parse editor content:', editorContent);
+      throw e;
+    }
   });
   
   test('should minify JSON correctly', async ({page}) => {
@@ -64,7 +69,7 @@ test.describe('JSON Editor Functionality', () => {
     
     // Get the editor content after minifying
     const editorContent = await page.evaluate(() => {
-      return document.querySelector('.cm-content').textContent;
+      return document.querySelector('.cm-content').textContent.trim();
     });
     
     // Verify the content is minified correctly (ignoring whitespace differences)
@@ -117,7 +122,7 @@ test.describe('JSON Editor Functionality', () => {
     await page.keyboard.press('Alt+Shift+F');
     
     let editorContent = await page.evaluate(() => {
-      return document.querySelector('.cm-content').textContent;
+      return document.querySelector('.cm-content').textContent.trim();
     });
     
     // Verify the content is formatted correctly (ignoring whitespace differences)
@@ -129,7 +134,7 @@ test.describe('JSON Editor Functionality', () => {
     await page.keyboard.press('Alt+Shift+M');
     
     editorContent = await page.evaluate(() => {
-      return document.querySelector('.cm-content').textContent;
+      return document.querySelector('.cm-content').textContent.trim();
     });
     
     // Verify the content is minified correctly (ignoring whitespace differences)
