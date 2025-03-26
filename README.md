@@ -34,7 +34,6 @@ under the following conditions:
 
 - Keep the code open source
 - Keep the app advertising free
-- Make sure the app is relatively maintained (TLS certificates are up-to-date, app is functional and has a decent
-  uptime )
+- Make sure the app is relatively maintained (No harmful security issues and app is functional and has a decent uptime )
 
 `jsonformatter.live` will continue to exist and will redirect to the new domain
