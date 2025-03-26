@@ -38,25 +38,14 @@
     animation: wiggle 0.5s ease;
 }
 
-/* Custom styles for editor */
-.editor-container {
-    min-height: 400px;
-}
-
+/* Theme variables */
 :root {
     --foreground-rgb: 0, 0, 0;
     --background-start-rgb: 214, 219, 220;
     --background-end-rgb: 255, 255, 255;
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --foreground-rgb: 255, 255, 255;
-        --background-start-rgb: 0, 0, 0;
-        --background-end-rgb: 0, 0, 0;
-    }
-}
-
+/* Base styles */
 body {
     min-height: 100%;
     color: rgb(var(--foreground-rgb));
@@ -67,18 +56,14 @@ body {
     ) rgb(var(--background-start-rgb));
 }
 
+/* Dark mode */
 .dark body {
-    background: #1a1d21; /* Slack-like dark background */
-    background-image: none; /* ensure no gradient in dark mode */
-    color: #d1d2d3; /* Slack-like text color */
+    background: #1a1d21 none;
+    color: #d1d2d3;
 }
 
-/* Remove firefox borders */
+/* Remove focus outlines */
 :focus {
-    outline: none;
-}
-
-.cm-editor.cm-focused {
     outline: none;
 }
 
@@ -87,20 +72,13 @@ body {
 }
 
 /* Transitions */
-.transition-colors {
-    transition-property: color, background-color, border-color;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 150ms;
-}
-
-/* Smooth theme transitions */
 html, body, * {
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
-/* Don't apply transitions to specific elements where it might cause issues */
+/* Elements that shouldn't have transitions */
 .wiggle,
-.cm-content, 
+.cm-content,
 .cm-line,
 button:active,
 input:focus {
