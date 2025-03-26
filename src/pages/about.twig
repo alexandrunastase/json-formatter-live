@@ -1,30 +1,45 @@
 {% extends "layouts/base.twig" %}
 
 {% block content %}
-<div class="flex flex-col items-center justify-between p-24 bg-zinc-50 dark:bg-zinc-900 transition-colors duration-150">
+  <div
+    class="flex flex-col items-center justify-between p-24 bg-zinc-50 dark:bg-zinc-900 transition-colors duration-150">
     <h1 class="text-3xl font-bold dark:text-white">About</h1>
     <div class="max-w-2xl mx-auto mt-8 text-gray-700 dark:text-gray-300">
-        <p class="mb-4">
-            JSON Formatter Live is a simple, fast, and free online tool to format and beautify your JSON data.
-        </p>
-        <p class="mb-4">
-            This tool was created to provide a lightweight, browser-based solution for developers who need to quickly format JSON data without installing any software.
-        </p>
-        <p class="mb-4">
-            Features include:
-        </p>
-        <ul class="list-disc pl-8 mb-4">
-            <li>Format JSON with proper indentation</li>
-            <li>Minify JSON to reduce size</li>
-            <li>Syntax highlighting</li>
-            <li>Error detection</li>
-            <li>Dark mode support</li>
-            <li>Keyboard shortcuts</li>
-            <li>Copy to clipboard functionality</li>
-        </ul>
-        <p>
-            The source code for this project is available on <a href="https://github.com/alexandrunastase/json-formatter-live" class="text-blue-600 dark:text-blue-400 hover:underline" target="_blank">GitHub</a>.
-        </p>
+
+
+      <h2 class="text-2xl font-bold mt-8 mb-4 dark:text-white">Motivation</h2>
+      <p class="mb-4">
+        I created this app in order to have a quick way to format JSON without needing to open another tab, in either
+        the browser nor the IDE. I think that PWA is a good fit for this, because a stand-alone desktop app is overkill
+        for such an app, and a web app is not as easy to access, since you need an open browser first and it would add
+        yet another tab.
+      </p>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4 dark:text-white">Principles</h2>
+      <ul class="list-disc pl-8 mb-4">
+        <li>Ease of use</li>
+        <li>Transparent (open analytics and code)</li>
+        <li>No intrusive ads or tracking</li>
+        <li>Decent looking design</li>
+      </ul>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4 dark:text-white">Open Source Appreciation</h2>
+      <p class="mb-4">
+        This project wouldn't be possible without these amazing open source technologies:
+      </p>
+      <ul class="list-disc pl-8 mb-4">
+        <li><a class="underline text-blue-500" target="_blank" href="https://codemirror.net/">CodeMirror</a></li>
+        <li><a class="underline text-blue-500" target="_blank" href="https://vite.dev/">vite</a></li>
+        <li><a class="underline text-blue-500" target="_blank" href="https://vituum.dev/">vitum</a></li>
+        <li><a class="underline text-blue-500" target="_blank" href="https://tailwindcss.com/">tailwindcss</a></li>
+        <li><a class="underline text-blue-500" target="_blank" href="https://heroicons.com/">heroicons</a></li>
+        <li><a class="underline text-blue-500" target="_blank" href="https://playwright.dev/">playwright</a></li>
+      </ul>
     </div>
-</div>
+    <p class="mt-5">
+      The source code for this project is available on <a
+        href="https://github.com/alexandrunastase/json-formatter-live"
+        class="text-blue-600 dark:text-blue-400 hover:underline" target="_blank">GitHub</a>.
+    </p>
+  </div>
 {% endblock %}

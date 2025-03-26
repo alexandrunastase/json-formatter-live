@@ -92,3 +92,17 @@ body {
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
 }
+
+/* Smooth theme transitions */
+html, body, * {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+}
+
+/* Don't apply transitions to specific elements where it might cause issues */
+.wiggle,
+.cm-content, 
+.cm-line,
+button:active,
+input:focus {
+    transition: none;
+}
