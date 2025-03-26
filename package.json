@@ -1,40 +1,35 @@
 {
-	"name": "json_formatter_live",
-	"version": "2.0.0",
-	"scripts": {
-		"dev": "svelte-kit dev",
-		"build": "svelte-kit build",
-		"preview": "svelte-kit preview",
-		"lint": "prettier --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
-		"format": "prettier --write --plugin-search-dir=. ."
-	},
-	"devDependencies": {
-		"@sveltejs/adapter-static": "^1.0.0-next.12",
-		"@sveltejs/kit": "1.0.0-next.291",
-		"@typescript-eslint/eslint-plugin": "^4.31.2",
-		"@typescript-eslint/parser": "^4.31.2",
-		"autoprefixer": "^10.3.0",
-		"cssnano": "^5.0.8",
-		"cypress": "^9.2.0",
-		"cypress-log-to-output": "^1.1.2",
-		"eslint": "^7.32.0",
-		"eslint-config-prettier": "^8.3.0",
-		"eslint-plugin-svelte3": "^3.2.1",
-		"postcss": "^8.3.0",
-		"postcss-load-config": "^3.1.0",
-		"prettier": "^2.4.1",
-		"prettier-plugin-svelte": "^2.4.0",
-		"sass": "^1.42.0",
-		"svelte": "^3.49.0",
-		"svelte-preprocess": "^4.9.0",
-		"tailwindcss": "^2.2.0",
-		"tslib": "^2.3.0",
-		"typescript": "^4.4.2",
-		"vite": "^2.9.13",
-		"ws": "^8.2.0"
-	},
-	"type": "module",
-	"engines": {
-		"node": "^18"
-	}
+  "name": "json-formatter-live",
+  "version": "3.0.0",
+  "description": "",
+  "engines": {
+    "node": ">=23.6"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 3080 --host --no-open",
+    "test": "playwright test",
+    "test:ui": "playwright test --ui"
+  },
+  "keywords": [],
+  "author": "Alexandru Nastase",
+  "devDependencies": {
+    "@codemirror/commands": "^6.8.0",
+    "@codemirror/lang-json": "^6.0.1",
+    "@codemirror/lint": "^6.8.4",
+    "@codemirror/state": "^6.5.2",
+    "@codemirror/view": "^6.36.4",
+    "@playwright/test": "^1.51.1",
+    "@vituum/vite-plugin-tailwindcss": "^1.2.0",
+    "@vituum/vite-plugin-twig": "^1.1.0",
+    "autoprefixer": "^10.4.21",
+    "codemirror": "^6.0.1",
+    "fast-glob": "^3.3.3",
+    "fs-extra": "^11.3.0",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.0.15",
+    "vite": "^6.2.2",
+    "vituum": "^1.2.0"
+  }
 }

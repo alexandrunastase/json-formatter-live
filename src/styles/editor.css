@@ -1,0 +1,134 @@
+/* CodeMirror 6 core styles */
+.cm-editor {
+    font-family: 'Ubuntu Mono', monospace;
+    font-weight: 500;
+    font-size: 18px;
+    padding: 0.8em 0;
+    min-height: 42vh;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 5px;
+}
+
+.editor-container {
+    min-height: 30em;
+}
+
+/* Gutters and line numbers */
+.cm-gutters {
+    background: #ffffff;
+    border: none;
+}
+
+.cm-lineNumbers .cm-gutterElement {
+    color: #5c5c5c;
+    padding-left: 10px;
+    font-weight: 800;
+}
+
+/* Selection and cursor */
+.cm-selectionBackground {
+    background-color: rgba(98, 98, 154, 0.2) !important;
+}
+
+.cm-cursor {
+    border-left: 2px solid #000 !important;
+}
+
+.cm-activeLine {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Scrollbar styling */
+.cm-scroller::-webkit-scrollbar {
+    width: 9px;
+}
+
+.cm-scroller::-webkit-scrollbar-thumb {
+    background: #6abfce;
+    border-radius: 999px;
+    border: 2px solid #fff;
+}
+
+.cm-scroller::-webkit-scrollbar-track {
+    background: #f6f8fa;
+}
+
+/* Focus styling */
+.cm-editor.cm-focused, :focus {
+    outline: none;
+}
+
+/* Diagnostics */
+.cm-diagnostic-error {
+    border-left: 2px solid #e53e3e;
+    padding-left: 6px;
+}
+
+.cm-diagnostic-warning {
+    border-left: 2px solid #dd6b20;
+    padding-left: 6px;
+}
+
+/* Tooltip styling */
+.cm-tooltip {
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode styles */
+.dark .cm-editor, 
+.dark .editor-container {
+    background-color: #1a1d21 !important;
+    color: #d1d2d3 !important;
+}
+
+.dark .cm-gutters {
+    background-color: #1a1d21 !important;
+    border-right-color: #2c2d30 !important;
+}
+
+.dark .cm-lineNumbers .cm-gutterElement {
+    color: #d3d3d3 !important;
+}
+
+.dark .cm-activeLineGutter {
+    background-color: rgba(39, 111, 134, 0.5) !important;
+}
+
+.dark .cm-selectionBackground {
+    background-color: rgba(39, 111, 134, 0.5) !important;
+}
+
+.dark .cm-cursor {
+    border-left: 2px solid #d1d2d3 !important;
+}
+
+.dark .cm-activeLine {
+    background-color: rgba(255, 255, 255, 0.03) !important;
+}
+
+.dark .cm-scroller {
+    background-color: #1a1d21 !important;
+}
+
+.dark .cm-scroller::-webkit-scrollbar-thumb {
+    border-color: #1a1d21;
+    background: #4a5664;
+}
+
+.dark .cm-scroller::-webkit-scrollbar-track {
+    background: #2c2d30;
+}
+
+.dark .cm-tooltip {
+    background-color: #2c2d30;
+    border-color: #4a5664;
+    color: #d1d2d3;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+/* Syntax highlighting in dark mode */
+.dark .ͼe {
+    color: #d56a6a;
+}

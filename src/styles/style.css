@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html {
+        font-family: 'Ubuntu', system-ui, sans-serif;
+    }
+
+    code, pre, .cm-editor {
+        font-family: 'Ubuntu Mono', monospace;
+    }
+}
+
+/* Animation for error wiggle */
+@keyframes wiggle {
+    0% {
+        transform: translateX(0);
+    }
+    20% {
+        transform: translateX(-4px);
+    }
+    40% {
+        transform: translateX(4px);
+    }
+    60% {
+        transform: translateX(-4px);
+    }
+    80% {
+        transform: translateX(4px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.wiggle {
+    animation: wiggle 0.5s ease;
+}
+
+/* Theme variables */
+:root {
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+}
+
+/* Base styles */
+body {
+    min-height: 100%;
+    color: rgb(var(--foreground-rgb));
+    background: linear-gradient(
+            to bottom,
+            transparent,
+            rgb(var(--background-end-rgb))
+    ) rgb(var(--background-start-rgb));
+}
+
+/* Dark mode */
+.dark body {
+    background: #1a1d21 none;
+    color: #d1d2d3;
+}
+
+/* Remove focus outlines */
+:focus {
+    outline: none;
+}
+
+::-moz-focus-inner {
+    border: 0;
+}
+
+/* Transitions */
+html, body, * {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Elements that shouldn't have transitions */
+.wiggle,
+.cm-content,
+.cm-line,
+button:active,
+input:focus {
+    transition: none;
+}
