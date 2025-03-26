@@ -1,2 +1,3 @@
 later:
 - drag and drop json files
+- improve syntax highlighting
