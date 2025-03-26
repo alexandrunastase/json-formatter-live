@@ -1,5 +1,2 @@
-- Add proper logos and test PWA on netlify
-- Update about and privacy pages
-
 later:
 - drag and drop json files
