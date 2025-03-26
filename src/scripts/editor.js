@@ -1,4 +1,3 @@
-// Import CodeMirror modules
 import {EditorState} from '@codemirror/state';
 import {EditorView, basicSetup} from 'codemirror';
 import {json} from '@codemirror/lang-json';
@@ -6,10 +5,8 @@ import {linter, lintGutter} from '@codemirror/lint';
 import {keymap} from '@codemirror/view';
 import {indentWithTab} from '@codemirror/commands';
 
-// Initialize variables
 let editorView;
 
-// Default JSON content
 const defaultValue = {
   "Hint": "JSON goes here",
   "Step 1": "Ctrl + V to paste code (it's selected by default)",
@@ -22,13 +19,11 @@ const defaultValue = {
   }
 };
 
-// Initialize editor when DOM is loaded
 document.addEventListener('DOMContentLoaded', function () {
   const editorContainer = document.getElementById('editor-container');
   if (!editorContainer) return;
   
-  // Create custom theme extension
-  const lightTheme = EditorView.theme({
+  const theme = EditorView.theme({
     "&": {
       backgroundColor: "#ffffff",
       color: "#000000"
@@ -56,7 +51,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
   
-  // Create JSON linter
   const jsonLint = linter(view => {
     const doc = view.state.doc;
     const diagnostics = [];
@@ -89,7 +83,6 @@ document.addEventListener('DOMContentLoaded', function () {
     return diagnostics;
   });
   
-  // Create editor with extensions
   editorView = new EditorView({
     doc: JSON.stringify(defaultValue, null, 2),
     extensions: [
@@ -97,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
       json(),
       lintGutter(),
       jsonLint,
-      lightTheme,
+      theme,
       EditorView.lineWrapping,
       keymap.of([indentWithTab]),
       EditorView.updateListener.of(update => {
@@ -109,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
     parent: editorContainer
   });
   
-  // Select all text initially
+  // Select all text initially for easy pasting
   setTimeout(() => {
     const docLength = editorView.state.doc.length;
     editorView.dispatch({
@@ -118,34 +111,28 @@ document.addEventListener('DOMContentLoaded', function () {
     editorView.focus();
   }, 100);
   
-  // Format button functionality
   const formatButton = document.getElementById('format-button');
   if (formatButton) {
     formatButton.addEventListener('click', formatJSON);
   }
   
-  // Minify button functionality
   const minifyButton = document.getElementById('minify-button');
   if (minifyButton) {
     minifyButton.addEventListener('click', minifyJSON);
   }
   
-  // Copy button functionality
   const copyButton = document.getElementById('copy-button');
   if (copyButton) {
     copyButton.addEventListener('click', copyToClipboard);
   }
   
-  // Add keyboard shortcuts
   document.addEventListener('keydown', handleKeyDown);
 });
 
-// Get editor content
 function getEditorContent() {
   return editorView.state.doc.toString();
 }
 
-// Set editor content
 function setEditorContent(content) {
   const transaction = editorView.state.update({
     changes: {
@@ -157,7 +144,6 @@ function setEditorContent(content) {
   editorView.dispatch(transaction);
 }
 
-// Format JSON function
 function formatJSON() {
   try {
     const currentContent = getEditorContent();
@@ -174,7 +160,6 @@ function formatJSON() {
   }
 }
 
-// Minify JSON function
 function minifyJSON() {
   try {
     const currentContent = getEditorContent();
@@ -191,7 +176,6 @@ function minifyJSON() {
   }
 }
 
-// Copy to clipboard function
 function copyToClipboard() {
   try {
     const currentContent = getEditorContent();
@@ -222,7 +206,6 @@ function copyToClipboard() {
   }
 }
 
-// Handle keyboard shortcuts
 function handleKeyDown(e) {
   // Alt+Shift+F for format
   if (e.altKey && e.shiftKey && e.key === 'F') {
@@ -236,5 +219,4 @@ function handleKeyDown(e) {
   }
 }
 
-// Export functions for use in other modules
 export {formatJSON, minifyJSON, copyToClipboard};

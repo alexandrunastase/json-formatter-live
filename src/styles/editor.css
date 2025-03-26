@@ -168,36 +168,3 @@
     width: 100%;
     height: 100%;
 }
-
-/* Syntax highlighting for dark mode - Slack-like theme */
-.dark .cm-editor .cm-string {
-    color: #6ab0f3 !important; /* blue strings */
-}
-
-.dark .cm-editor .cm-number {
-    color: #e5c07b !important; /* yellow numbers */
-}
-
-.dark .cm-editor .cm-property {
-    color: #98c379 !important; /* green properties */
-}
-
-.dark .cm-editor .cm-keyword {
-    color: #c678dd !important; /* purple keywords */
-}
-
-.dark .cm-editor .cm-comment {
-    color: #7f848e !important; /* muted comments */
-}
-
-.dark .cm-editor .cm-atom {
-    color: #d19a66 !important; /* orange atoms */
-}
-
-.dark .cm-editor .cm-meta {
-    color: #56b6c2 !important; /* cyan meta */
-}
-
-.dark .cm-editor .cm-variable {
-    color: #d1d2d3 !important; /* default text color */
-}

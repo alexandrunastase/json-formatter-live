@@ -1,8 +1,5 @@
-// Main JavaScript entry point
 import '../styles/style.css';
 import '../styles/editor.css';
-
-// Theme initialization
 const initializeTheme = () => {
     const isDarkMode = localStorage.getItem('isDarkMode') === 'true' ||
         (localStorage.getItem('isDarkMode') === null &&
@@ -15,18 +12,15 @@ const initializeTheme = () => {
     }
 };
 
-// Initialize theme before page loads to prevent flash
+// Initialize theme before page loads to prevent flash of incorrect theme
 initializeTheme();
 
-// Theme toggle functionality
 document.addEventListener('DOMContentLoaded', function () {
-    // Set current year in footer if element exists
     const currentYearElement = document.getElementById('current-year');
     if (currentYearElement) {
         currentYearElement.textContent = new Date().getFullYear();
     }
     
-    // Theme toggle functionality
     const themeToggle = document.getElementById('theme-toggle');
     if (themeToggle) {
         themeToggle.addEventListener('click', function () {
