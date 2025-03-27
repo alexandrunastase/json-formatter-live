@@ -1,4 +1,5 @@
-/* CodeMirror 6 core styles */
+/* ===== EDITOR CORE STYLES ===== */
+/* Base editor styles that apply to both light and dark themes */
 .cm-editor {
     font-family: 'Ubuntu Mono', monospace;
     font-weight: 500;
@@ -6,15 +7,32 @@
     padding: 0.8em 0;
     min-height: 42vh;
     width: 100%;
-    background: #ffffff;
     border-radius: 5px;
 }
 
 .editor-container {
-    min-height: 30em;
+    min-height: 32em;
 }
 
-/* Gutters and line numbers */
+/* Focus styling */
+.cm-editor.cm-focused, :focus {
+    outline: none;
+}
+
+/* Light theme editor */
+.cm-editor {
+    background: #ffffff;
+}
+
+/* Dark theme editor */
+.dark .cm-editor,
+.dark .editor-container {
+    background-color: #1a1d21 !important;
+    color: #d1d2d3 !important;
+}
+
+/* ===== GUTTERS AND LINE NUMBERS ===== */
+/* Light theme gutters */
 .cm-gutters {
     background: #ffffff;
     border: none;
@@ -26,63 +44,7 @@
     font-weight: 800;
 }
 
-/* Selection and cursor */
-.cm-selectionBackground {
-    background-color: rgba(98, 98, 154, 0.2) !important;
-}
-
-.cm-cursor {
-    border-left: 2px solid #000 !important;
-}
-
-.cm-activeLine {
-    background-color: rgba(0, 0, 0, 0.05) !important;
-}
-
-/* Scrollbar styling */
-.cm-scroller::-webkit-scrollbar {
-    width: 9px;
-}
-
-.cm-scroller::-webkit-scrollbar-thumb {
-    background: #6abfce;
-    border-radius: 999px;
-    border: 2px solid #fff;
-}
-
-.cm-scroller::-webkit-scrollbar-track {
-    background: #f6f8fa;
-}
-
-/* Focus styling */
-.cm-editor.cm-focused, :focus {
-    outline: none;
-}
-
-/* Diagnostics */
-.cm-diagnostic-error {
-    border-left: 2px solid #e53e3e;
-    padding-left: 6px;
-}
-
-.cm-diagnostic-warning {
-    border-left: 2px solid #dd6b20;
-    padding-left: 6px;
-}
-
-/* Tooltip styling */
-.cm-tooltip {
-    border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-/* Dark mode styles */
-.dark .cm-editor, 
-.dark .editor-container {
-    background-color: #1a1d21 !important;
-    color: #d1d2d3 !important;
-}
-
+/* Dark theme gutters */
 .dark .cm-gutters {
     background-color: #1a1d21 !important;
     border-right-color: #2c2d30 !important;
@@ -96,6 +58,21 @@
     background-color: rgba(39, 111, 134, 0.5) !important;
 }
 
+/* ===== SELECTION AND CURSOR ===== */
+/* Light theme selection and cursor */
+.cm-selectionBackground {
+    background-color: rgba(98, 98, 154, 0.2) !important;
+}
+
+.cm-cursor {
+    border-left: 2px solid #000 !important;
+}
+
+.cm-activeLine {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Dark theme selection and cursor */
 .dark .cm-selectionBackground {
     background-color: rgba(39, 111, 134, 0.5) !important;
 }
@@ -108,19 +85,41 @@
     background-color: rgba(255, 255, 255, 0.03) !important;
 }
 
-.dark .cm-scroller {
-    background-color: #1a1d21 !important;
+/* ===== SCROLLBAR STYLING ===== */
+/* Base scrollbar styles */
+.cm-scroller::-webkit-scrollbar {
+    width: 9px;
 }
 
-.dark .cm-scroller::-webkit-scrollbar-thumb {
-    border-color: #1a1d21;
-    background: #4a5664;
+/* ===== DIAGNOSTICS ===== */
+/* Diagnostics for both themes */
+.cm-diagnostic-error {
+    border-left: 2px solid #e53e3e;
+    padding-left: 6px;
 }
 
-.dark .cm-scroller::-webkit-scrollbar-track {
-    background: #2c2d30;
+.cm-diagnostic-warning {
+    border-left: 2px solid #dd6b20;
+    padding-left: 6px;
 }
 
+/* ===== TOOLTIP STYLING ===== */
+/* Base tooltip styles */
+.cm-tooltip {
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    position: absolute;
+}
+
+.cm-tooltip.cm-tooltip-autocomplete {
+    z-index: 110;
+}
+
+/* Light theme tooltip */
+/* (Base styles already defined above) */
+
+/* Dark theme tooltip */
 .dark .cm-tooltip {
     background-color: #2c2d30;
     border-color: #4a5664;
@@ -128,7 +127,155 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 }
 
-/* Syntax highlighting in dark mode */
+/* ===== SEARCH PANEL STYLING ===== */
+/* Base search panel styles */
+.cm-panels {
+    padding: 10px 0;
+    background: none;
+}
+
+.ͼ2 .cm-panels {
+    background: none;
+}
+
+.cm-panel.cm-search {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    font-family: 'Ubuntu', sans-serif;
+    position: relative;
+    z-index: 200;
+    max-width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cm-panel.cm-search input,
+.cm-panel.cm-search button {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 14px;
+    margin: 2px 4px;
+    border-radius: 4px;
+}
+
+.cm-panel.cm-search label {
+    font-size: 14px;
+    margin-right: 4px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.cm-panel.cm-search input[type="checkbox"] {
+    margin-right: 4px;
+}
+
+/* Light theme search panel */
+.cm-panel.cm-search {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.cm-panel.cm-search input {
+    border: 1px solid #e2e8f0;
+    padding: 4px 8px;
+    background-color: #f8fafc;
+}
+
+.cm-panel.cm-search input:focus {
+    outline: none;
+    border-color: #4181ea;
+}
+
+.cm-panel.cm-search button {
+    background: #fff;
+    border: 2px solid #d1d5da;
+    padding: 4px 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-weight: 500;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.cm-panel.cm-search button:hover {
+    background: #f9fafb;
+}
+
+.cm-panel.cm-search button:active {
+    transform: translateY(1px);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark theme search panel */
+.dark .cm-panels {
+    border-color: #2c2d30;
+    color: #d1d2d3;
+}
+
+.dark .cm-panel.cm-search {
+    background-color: #27272a;
+    border-color: #27272a;
+    color: #d1d2d3;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.dark .cm-panel.cm-search input {
+    background-color: #2c2d30;
+    border-color: #4a5664;
+    color: #d1d2d3;
+}
+
+.dark .cm-panel.cm-search input:focus {
+    border-color: #4181ea;
+}
+
+.dark .cm-panel.cm-search button {
+    background-color: #2c2d30;
+    color: #ffffff;
+}
+
+.dark .cm-panel.cm-search button:hover {
+    background-color: #3f3f45;
+}
+
+.dark .cm-panel.cm-search button:active {
+    transform: translateY(1px);
+}
+
+/* ===== SYNTAX HIGHLIGHTING ===== */
+/* Light theme syntax highlighting is handled by CodeMirror defaults */
+
+/* Dark theme syntax highlighting */
 .dark .ͼe {
     color: #d56a6a;
+}
+
+.ͼ1 .cm-panel.cm-search [name=close] {
+    right: 0.5rem;
+    background-color: transparent;
+}
+
+.ͼ1 .cm-panel.cm-search [name=close]:hover {
+    color: #d56a6a;
+    transition: color 0.3s;
+    background-color: transparent;
+}
+
+.cm-search-count {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.cm-search-count.no-match {
+    color: #d56a6a !important;
+}
+
+.cm-search-count {
+    color: #000;
+    font-size: 12px;
+}
+
+.dark .cm-search-count {
+    color: #fff;
 }

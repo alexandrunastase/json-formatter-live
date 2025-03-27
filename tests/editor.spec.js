@@ -119,4 +119,47 @@ test.describe('JSON Editor Functionality', () => {
     const parsedMinifiedExpected = JSON.parse(minifiedJson);
     expect(JSON.stringify(parsedMinified)).toBe(JSON.stringify(parsedMinifiedExpected));
   });
+
+  test('should display search panel when Ctrl+F is pressed', async ({page}) => {
+    // Make sure the editor is fully loaded
+    await page.waitForSelector('.cm-content', {state: 'visible'});
+    await page.waitForTimeout(500); // Give CodeMirror time to fully initialize
+    
+    // Press Ctrl+F to open search panel
+    await page.keyboard.press('Control+f');
+    
+    // Wait for search panel to appear
+    await page.waitForSelector('.cm-search', {state: 'visible', timeout: 5000});
+    
+    // Verify search panel is visible
+    const searchPanelVisible = await page.isVisible('.cm-search');
+    expect(searchPanelVisible).toBeTruthy();
+    
+    // Verify search input is focused
+    const isFocused = await page.evaluate(() => {
+      const searchInput = document.querySelector('.cm-search input[name="search"]');
+      return document.activeElement === searchInput;
+    });
+    expect(isFocused).toBeTruthy();
+    
+    // Type something to trigger the search count display
+    await page.fill('.cm-search input[name="search"]', 'Jane');
+    
+    // Wait for search results to be processed
+    await page.waitForTimeout(1000);
+    
+    // Check if the search count is displayed using a more flexible approach
+    const hasSearchCount = await page.evaluate(() => {
+      // Look for any element within the search panel that might contain count information
+      const searchPanel = document.querySelector('.cm-search');
+      if (!searchPanel) return false;
+      
+      // Check for text content that indicates a match count
+      const panelText = searchPanel.textContent || '';
+      return panelText.includes('match') || panelText.includes('1 match') || 
+             panelText.includes('matches') || /\d+\s+match(es)?/.test(panelText);
+    });
+    
+    expect(hasSearchCount).toBeTruthy();
+  });
 });

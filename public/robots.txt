@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /about
+Disallow: /privacy-policy
+
+Sitemap: https://jsonformatter.com/sitemap.xml

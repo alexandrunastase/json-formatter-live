@@ -1,3 +1,4 @@
 later:
 - drag and drop json files
 - improve syntax highlighting
+- Add more tests for the search function
