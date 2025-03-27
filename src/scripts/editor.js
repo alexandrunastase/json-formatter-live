@@ -99,7 +99,8 @@ document.addEventListener('DOMContentLoaded', function () {
   
   // Use the default search extension but add a match counter
   const searchWithCount = search({
-    highlightSelectionMatches: true
+    highlightSelectionMatches: true,
+    top: true,
   });
   
   

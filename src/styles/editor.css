@@ -5,13 +5,13 @@
     font-weight: 500;
     font-size: 18px;
     padding: 0.8em 0;
-    min-height: 42vh;
+    min-height: 52vh;
     width: 100%;
     border-radius: 5px;
 }
 
 .editor-container {
-    min-height: 32em;
+    min-height: 32rem;
 }
 
 /* Focus styling */
@@ -107,7 +107,6 @@
 /* Base tooltip styles */
 .cm-tooltip {
     border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     z-index: 100;
     position: absolute;
 }
@@ -124,7 +123,6 @@
     background-color: #2c2d30;
     border-color: #4a5664;
     color: #d1d2d3;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 }
 
 /* ===== SEARCH PANEL STYLING ===== */
@@ -138,16 +136,18 @@
     background: none;
 }
 
+.ͼ2 .cm-panels-top {
+    border: none;
+}
+
 .cm-panel.cm-search {
-    padding: 10px;
+    padding: 10px !important;
     border-radius: 5px;
-    margin-bottom: 8px;
     font-family: 'Ubuntu', sans-serif;
     position: relative;
     z-index: 200;
-    max-width: 95%;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 100%;
+    margin: 10px auto 8px;
 }
 
 .cm-panel.cm-search input,
@@ -173,7 +173,6 @@
 .cm-panel.cm-search {
     background-color: #ffffff;
     border: 1px solid #e2e8f0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .cm-panel.cm-search input {
