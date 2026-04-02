@@ -8,7 +8,12 @@ import {search, searchKeymap, SearchQuery} from '@codemirror/search';
 
 let editorView;
 
-const defaultValue = {
+const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+const defaultValue = isTouchDevice ? {
+  "Hint": "Paste your JSON here",
+  "Step": "Tap Format or Minify below"
+} : {
   "Hint": "JSON goes here",
   "Step 1": "Ctrl + V to paste code (it's selected by default)",
   "Step 2": "Alt + Shift + F to format",

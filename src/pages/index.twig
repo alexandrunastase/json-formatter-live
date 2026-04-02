@@ -6,9 +6,9 @@
 
   <!-- Main content -->
   <div
-    class="flex min-h-64 flex-col justify-center bg-gray-50 dark:bg-zinc-800 mt-12 max-w-full transition-colors duration-150">
+    class="flex min-h-64 flex-col justify-center bg-gray-50 dark:bg-zinc-800 lg:mt-12 max-w-full transition-colors duration-150">
     <div
-      class="h-full border-2 border-gray-200 dark:border-gray-700 bg-white lg:pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 dark:ring-gray-100/5 sm:rounded-lg lg:px-10 lg:mx-6 mb-16 editor-container transition-colors duration-150 relative">
+      class="h-full border-2 border-gray-200 dark:border-gray-700 bg-white pt-4 lg:pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 dark:ring-gray-100/5 sm:rounded-lg px-4 lg:px-10 lg:mx-6 mb-4 lg:mb-16 editor-container transition-colors duration-150 relative">
       <div class="sticky top-6 right-6 z-20">
         <div class="flex justify-end">
           <button
@@ -27,10 +27,10 @@
       </div>
       <div id="editor-container" class="w-full h-full"></div>
       <div
-        class="sticky bottom-0 z-10 -mx-10 px-10 py-4 bg-white dark:bg-zinc-800 border-t border-gray-200 dark:border-gray-700 flex justify-end gap-2 transition-colors duration-150">
+        class="sticky bottom-0 z-10 -mx-4 px-4 lg:-mx-10 lg:px-10 py-3 bg-white dark:bg-zinc-800 border-t border-gray-200 dark:border-gray-700 flex lg:justify-end gap-2 transition-colors duration-150">
         <button
           id="format-button"
-          class="inline-flex items-center px-3 py-2 text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-zinc-800 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-zinc-700 focus:outline-none transition-colors duration-150"
+          class="inline-flex flex-1 lg:flex-none justify-center lg:justify-start items-center px-3 py-3 lg:py-2 text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-zinc-800 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-zinc-700 focus:outline-none transition-colors duration-150"
           title="Format JSON (Alt+Shift+F)"
         >
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -42,7 +42,7 @@
         </button>
         <button
           id="minify-button"
-          class="inline-flex items-center px-3 py-2 text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-zinc-800 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-zinc-700 focus:outline-none transition-colors duration-150"
+          class="inline-flex flex-1 lg:flex-none justify-center lg:justify-start items-center px-3 py-3 lg:py-2 text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-zinc-800 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-zinc-700 focus:outline-none transition-colors duration-150"
           title="Minify JSON (Alt+Shift+M)"
         >
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -54,8 +54,8 @@
         </button>
       </div>
     </div>
-    <div class="mb-5 flex justify-center">
-    <span class="text-sm leading-6 text-gray-600 dark:text-gray-400 ">
+    <div class="mb-5 flex justify-center px-8">
+    <span class="text-sm leading-6 text-gray-600 dark:text-gray-400 text-center">
       Minimalist installable&nbsp;<a class="underline hover:text-gray-900 dark:hover:text-gray-200"
                                      href="https://jsonformatter.com/">json formatter</a>,&nbsp;editor and minifier designed to maximize productivity
     </span>

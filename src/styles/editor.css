@@ -44,6 +44,35 @@
     font-weight: 800;
 }
 
+.cm-foldGutter span[title="Fold line"] {
+    position: relative;
+    top: -2px;
+}
+
+@media (max-width: 640px) {
+    .cm-editor {
+        font-size: 14px;
+    }
+
+    .cm-lineNumbers .cm-gutterElement {
+        font-size: 13px;
+        padding-left: 6px;
+        padding-right: 4px;
+    }
+
+    .cm-foldGutter .cm-gutterElement {
+        font-size: 13px;
+        width: 14px;
+        line-height: 1.4;
+    }
+
+    #format-button,
+    #minify-button,
+    #copy-button {
+        font-size: 16px;
+    }
+}
+
 /* Dark theme gutters */
 .dark .cm-gutters {
     background-color: #1a1d21 !important;
